@@ -1,38 +1,43 @@
 const searchRecords = [
   {
-    title: "本站公告：十周年资料整理说明",
+    title: "本站公告：请同学赶紧发送照片以便网站保存",
     type: "公告",
-    href: "#notice",
-    keys: ["公告", "十周年", "关闭", "网站", "维护", "资料组"],
-    text: "免费空间即将到期，旧相册、留言和改名记录正在转为静态存档。"
+    href: "pages/photo-submit-notice.html",
+    keys: ["公告","本站公告","照片", "发送照片", "保存", "网站保存", "班长", "信息委员"]
   },
   {
-    title: "班级相册：2013 春游合照",
+    title: "本站公告：停止维护说明",
+    type: "公告",
+    href: "pages/stop-maintenance-notice.html",
+    keys: ["公告","本站公告","关闭", "网站", "维护", "资料组", "停止维护"]
+  },
+  {
+    title: "照片墙：2014 秋季运动会",
     type: "相册",
     href: "#album",
-    keys: ["照片", "相册", "合照", "春游", "2013", "缺席"],
-    text: "相册备注显示名单按旧班册整理，缺席人数待复核。"
+    keys: ["照片", "照片墙", "相册", "运动会", "秋季运动会", "2014", "班级相册"],
+    text: "预览图缺失，原图存放在班级相册。"
   },
   {
-    title: "维护记录：缺席名单说明",
-    type: "维护",
-    href: "#updates",
-    keys: ["缺席名单", "缺席", "修正", "记录", "维护", "复核"],
-    text: "2024-06-03 更新缺席名单说明，早期页面可能存在缺页或重复记录。"
+    title: "internal/students/absence_2015_review.csv",
+    type: "内网索引",
+    href: "#notice",
+    keys: ["缺席名单", "缺席", "修正", "记录", "维护", "复核", "internal", "内网"],
+    text: "旧索引误收录的缺席名单复核表，路径标记为 internal，只读镜像不应公开显示。"
   },
   {
-    title: "留言簿摘录：旧留言恢复",
-    type: "留言",
+    title: "db_backup.guestbook_restore_0603",
+    type: "数据库备份",
     href: "#guestbook",
-    keys: ["留言", "留言簿", "匿名", "备份", "恢复"],
-    text: "旧留言正在从备份里恢复，重复、乱码和空白楼层会统一清理。"
+    keys: ["留言", "留言簿", "匿名", "备份", "恢复", "db", "backup", "数据库"],
+    text: "旧留言恢复任务残留的备份标题，包含重复、乱码和空白楼层的清理记录。"
   },
   {
-    title: "班委资料：班长上传记录",
-    type: "资料",
-    href: "#album",
-    keys: ["班长", "班委", "上传", "维护员", "毕业教室"],
-    text: "毕业教室相册由班长上传，维护员于 2024 年重新编号。"
+    title: "visitor_match/xiaoyun/session_0427",
+    type: "权限错误",
+    href: "#guestbook",
+    keys: ["肖云", "访客", "visitor", "xiaoyun", "session", "0427", "匹配"],
+    text: "访客标识与旧站检索记录发生匹配。该记录不应出现在公开搜索结果中。"
   }
 ];
 
@@ -55,9 +60,9 @@ function renderEmpty(message) {
 function renderResults(query, matches) {
   const items = matches.map((item) => `
     <li>
-      <a href="${item.href}">${item.title}</a>
-      <span>${item.type} · 静态存档</span>
-      <p>${item.text}</p>
+      <a href="${item.href}" target="_blank" rel="noopener">${item.title}</a>
+      <span>${item.type}</span>
+      ${item.text ? `<p>${item.text}</p>` : ""}
     </li>
   `).join("");
 
@@ -108,12 +113,6 @@ closeButton.addEventListener("click", closeModal);
 
 modal.addEventListener("click", (event) => {
   if (event.target === modal) {
-    closeModal();
-  }
-});
-
-resultBox.addEventListener("click", (event) => {
-  if (event.target.closest("a")) {
     closeModal();
   }
 });

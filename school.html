@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>松川七中校园回忆录</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="header-main">
+        <div>
+          <h1>松川七中校园回忆录</h1>
+        </div>
+
+        <form class="site-search" id="siteSearch" autocomplete="off">
+          <label for="searchInput">资料检索</label>
+          <div class="search-row">
+            <input id="searchInput" name="q" type="search" placeholder="输入姓名、相册、留言或记录">
+            <button type="submit">搜索</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="old-nav site-status-bar">最后整理：2020-11-03 02:17 · 当前为只读镜像</div>
+
+      <div class="ticker" aria-label="滚动公告">
+        <marquee scrollamount="3">这是由班里的同学自发维护的网站，用来保存我们之间珍贵的回忆！如果发现姓名有误，或者学生信息有误，请联系网站管理员（原信息委员）。记住，我们永远是幸福的一家人！</marquee>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="left-column">
+        <section class="panel compact">
+          <h2>站点档案</h2>
+          <dl class="basic-list">
+            <dt>建站时间</dt>
+            <dd>2016-07-09</dd>
+            <dt>维护状态</dt>
+            <dd>停止维护</dd>
+            <dt>镜像时间</dt>
+            <dd>2024-04-17</dd>
+            <dt>访问权限</dt>
+            <dd>访客只读</dd>
+          </dl>
+        </section>
+
+        <section class="panel compact visitor-box">
+          <h2>访问计数</h2>
+          <p class="counter">00084219</p>
+          <p>今日访问：17</p>
+          <p>在线：2 人</p>
+        </section>
+      </aside>
+
+      <section class="content-column">
+        <section class="notice panel" id="notice">
+          <h2>本站公告</h2>
+          <p class="stamp">[2020-11-03] 资料组公告</p>
+          <p>因免费空间即将到期，本站将停止继续维护。资料整理完成后，部分页面会转为静态存档，留言簿不再开放新回复。</p>
+          <p>如有同学希望补充合照、改名记录、或转学记录，请在关闭前通过站内搜索找到对应页面，再按页面备注提交。</p>
+        </section>
+
+        <section class="panel" id="album">
+          <div class="section-title-row">
+            <h2>照片墙</h2>
+          </div>
+          <div class="photo-grid">
+            <article class="photo-slot">
+              <div class="photo-frame missing-photo">预览图缺失</div>
+              <h3>2014 秋季运动会</h3>
+              <p>预览图缺失，原图存放在班级相册。</p>
+            </article>
+            <article class="photo-slot">
+              <div class="photo-frame">
+                <img src="dimpome.png" alt="毕业前的教室合照">
+              </div>
+              <h3>毕业前的教室</h3>
+              <p>最后一次班会后</p>
+            </article>
+            <article class="photo-slot">
+              <div class="photo-frame">
+                <img src="credit.png" alt="窗边看到的熟悉街景">
+              </div>
+              <h3>熟悉的街景</h3>
+              <p>维护员于 2024 年重新编号。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="guestbook">
+          <h2>留言簿摘录</h2>
+          <article class="message">
+            <p><strong>老周：</strong>十年真快啊，之前的教室照片还有人有原图吗？我这边只有压缩版。</p>
+            <time>2020-05-29 18:42</time>
+          </article>
+          <article class="message">
+            <p><strong>资料组：</strong>旧留言正在从备份里恢复，重复、乱码和空白楼层会统一清理。</p>
+            <time>2020-06-03 09:11</time>
+          </article>
+          <article class="message muted">
+            <p><strong>匿名：</strong>有些名字不是丢了，是被改掉了。</p>
+            <time>2020-06-08 00:17</time>
+          </article>
+        </section>
+      </section>
+
+      <aside class="right-column">
+        <section class="panel compact">
+          <h2>维护说明</h2>
+          <p>本站资料来自毕业册、旧网盘、班级邮箱和同学投稿。早期页面可能存在错别字、缺页或重复记录。</p>
+        </section>
+        <section class="panel compact">
+          <h2>检索提示</h2>
+          <p>站内搜索正在使用旧索引。若结果出现“internal”“db_backup”等字段，请忽略并等待管理员修复。</p>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      <p>松川七中校园回忆录 · 非公开纪念站 · 页面编码 UTF-8</p>
+      <p class="footer-meta">建议使用 1024×768 分辨率浏览。部分早期资料仍在整理。<span class="page-index-note">1/40</span></p>
+    </footer>
+  </div>
+
+  <div class="search-modal" id="searchModal" aria-hidden="true">
+    <div class="modal-window" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-titlebar">
+        <h2 id="modalTitle">站内检索结果</h2>
+        <button type="button" id="closeSearchModal" aria-label="关闭检索结果">×</button>
+      </div>
+      <div class="modal-body" id="searchResults" aria-live="polite">
+        <p class="empty-result">请输入关键词。支持姓名、相册名、旧记录编号。</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="search.js"></script>
+</body>
+</html>
