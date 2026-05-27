@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>折棠6中后台登录</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-page">
+  <div class="admin-shell">
+    <header class="admin-header">
+      <div>
+        <p class="admin-kicker">ZT6 CLASS ARCHIVE</p>
+        <h1>后台管理系统</h1>
+      </div>
+      <span class="admin-state" id="adminState">账号验证</span>
+    </header>
+
+    <main class="admin-main">
+      <section class="admin-login-panel" id="loginPanel" aria-labelledby="loginTitle">
+        <h2 id="loginTitle">管理员登录</h2>
+        <form class="admin-login-form" id="adminLoginForm" autocomplete="off">
+          <label for="adminUsername">用户名</label>
+          <input id="adminUsername" name="username" type="text" required>
+
+          <label for="adminPassword">密码</label>
+          <input id="adminPassword" name="password" type="password" required>
+
+          <button type="submit">登录</button>
+          <p class="admin-message" id="adminMessage" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="admin-loading-panel" id="loadingPanel" hidden aria-live="polite">
+        <h2>正在进入后台</h2>
+        <div class="admin-loading-box">
+          <p id="loadingLine">正在验证账号权限...</p>
+          <div class="admin-loading-track">
+            <span id="loadingBar"></span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="admin-footer">
+      <a href="school.html">返回同窗录首页</a>
+    </footer>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
