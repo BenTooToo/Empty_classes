@@ -1,15 +1,21 @@
 const searchRecords = [
   {
-    title: "本站公告：请同学赶紧发送照片以便网站保存",
+    title: "请同学赶紧发送照片以便网站保存",
     type: "公告",
     href: "pages/03-photo-submit-notice.html",
     keys: ["公告", "本站公告"]
   },
   {
-    title: "本站公告：停止维护说明",
+    title: "本站公告：请勿散播谣言",
     type: "公告",
     href: "pages/04-stop-maintenance-notice.html",
-    keys: ["公告", "本站公告","维护", "停止维护"]
+    keys: ["公告", "本站公告", "班长公告", "幽灵女孩", "谣言", "恶作剧", "女高三生"]
+  },
+  {
+    title: "福安饭心理咨询服务推荐",
+    type: "公告",
+    href: "pages/26-fuanfan-counseling-notice.html",
+    keys: ["福安饭", "福安家常饭馆"]
   },
   {
     title: "班级相册",
@@ -18,7 +24,7 @@ const searchRecords = [
     keys: ["班级相册", "相册","2015春游_湖边合照"]
   },
   {
-    title: "黑箱百科：折棠市第六中学",
+    title: "折棠市第六中学",
     type: "黑箱百科",
     href: "pages/06-zhetang-six-intro.html",
     keys: ["折棠6中", "折棠六中", "折棠市", "折棠市第六中学", "学校介绍", "黑箱百科"]
@@ -33,31 +39,43 @@ const searchRecords = [
     title: "访问受限",
     type: "权限限制",
     href: "pages/08-absence-correction.html",
-    keys: ["缺席", "缺席名单", "缺席名单修正记录", "访问受限", "admin-07"]
+    keys: ["缺席", "缺席名单"]
   },
   {
     title: "学生名单",
     type: "名单",
     href: "pages/09-student-roster.html",
-    keys: ["学生名单", "信息委员", "美术委员", "林若萱"]
+    keys: ["学生名单", "信息委员", "美术委员","班长"]
+  },
+  {
+    title: "聊天截图",
+    type: "照片",
+    href: "pages/28-zhang-yuhang-call-record.html",
+    keys: ["张宇航"]
   },
   {
     title: "黑箱百科：林若萱",
     type: "黑箱百科",
     href: "pages/24-lin-ruoxuan-profile.html",
-    keys: ["林若萱", "林若萱个人简介", "个人简介", "美术委员", "黑箱百科"]
+    keys: ["林若萱"]
   },
   {
-    title: "突发，知名画家林若萱成为植物人",
+    title: "黑箱百科：本2兔",
+    type: "黑箱百科",
+    href: "pages/27-ben2tu-profile.html",
+    keys: ["本2兔", "本二兔", "ben2tu", "bilibili", "折棠6中同窗录作者"]
+  },
+  {
+    title: "突发",
     type: "娱乐新闻",
     href: "pages/25-lin-ruoxuan-news.html",
-    keys: ["林若萱", "娱乐新闻", "颜料污染", "植物人"]
+    keys: ["林若萱"]
   },
   {
     title: "我的日记1：信息委员",
     type: "日记",
     href: "pages/10-info-diary-01.html",
-    keys: ["我的日记1", "信息委员日记1", "好的归宿"]
+    keys: ["我的日记1", "信息委员日记1", "许知夏", "好的归宿"]
   },
   {
     title: "我的日记2：信息委员",
@@ -111,19 +129,13 @@ const searchRecords = [
     title: "管理员账号登录：班长",
     type: "管理员",
     href: "pages/19-admin-monitor-account.html",
-    keys: ["管理员账号 班长", "班长账号", "大毛", "愿奥窟耶他保佑我"]
+    keys: ["管理员账号 班长", "班长账号", "admin-07", "大毛", "愿奥窟耶他保佑我"]
   },
   {
     title: "班长日记",
     type: "日记",
     href: "pages/20-monitor-diary.html",
     keys: ["班长日记", "聊天记录", "仪式是真的"]
-  },
-  {
-    title: "管理员账号登录：体育委员",
-    type: "管理员",
-    href: "pages/21-admin-sports-account.html",
-    keys: ["管理员账号 体育委员", "体育委员", "我", "真相大白"]
   },
   {
     title: "恢复登录",
@@ -219,3 +231,32 @@ document.addEventListener("keydown", (event) => {
     closeModal();
   }
 });
+
+const guestbookSubmit = document.querySelector("#guestbookSubmit");
+const guestbookForm = document.querySelector("#guestbookCompose");
+const guestbookToast = document.querySelector("#guestbookToast");
+let guestbookToastTimer;
+
+function showGuestbookClosedToast() {
+  if (!guestbookToast) {
+    return;
+  }
+
+  window.clearTimeout(guestbookToastTimer);
+  guestbookToast.classList.add("is-visible");
+
+  guestbookToastTimer = window.setTimeout(() => {
+    guestbookToast.classList.remove("is-visible");
+  }, 1800);
+}
+
+if (guestbookSubmit) {
+  guestbookSubmit.addEventListener("click", showGuestbookClosedToast);
+}
+
+if (guestbookForm) {
+  guestbookForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    showGuestbookClosedToast();
+  });
+}

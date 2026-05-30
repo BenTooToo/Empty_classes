@@ -41,6 +41,7 @@
             <li>旧站的站内搜索是主要异常来源，关键词会暴露不该出现的记录。</li>
             <li>本论坛强烈推荐在电脑上使用，由于技术问题移动端目前并不适配。</li>
             <li>本游戏不由任何真实故事启发，如有雷同，纯属巧合。</li>
+            <li>游戏部分网页存在剧烈颜色改变，光敏症患者请谨慎游玩。</li>
           </ol>
         </section>
       </aside>
@@ -57,7 +58,7 @@
             <span>bug收集员</span>
           </div>
           <div class="post-body">
-            <time>2026-05-25 22:48</time>
+            <time data-day="yesterday" data-clock="22:48">2026-05-25 22:48</time>
             <p>先开个坑，大家把见过的离谱旧站都丢这里。打不开、乱码、搜索框乱吐东西、后台入口没关的都算。</p>
             <p>只盘点，不攻击，不爆破，看到能访问的旧页面也别乱填资料。</p>
           </div>
@@ -69,7 +70,7 @@
             <span>路过一下</span>
           </div>
           <div class="post-body">
-            <time>2026-05-25 22:51</time>
+            <time data-day="yesterday" data-clock="22:51">2026-05-25 22:51</time>
             <p>占楼。以前学校机房那个选课系统算不算？点三次刷新能把上届名单刷出来。</p>
           </div>
         </article>
@@ -80,7 +81,7 @@
             <span>灰色缓存</span>
           </div>
           <div class="post-body">
-            <time>2026-05-25 23:07</time>
+            <time data-day="yesterday" data-clock="23:07">2026-05-25 23:07</time>
             <p>我先来一个：<strong>折棠6中同窗录</strong>。不知道是谁做的，像是同学自己搭的纪念站，网站停止维护好几年了，页面还停在旧式同学录风格。</p>
             <p>最离谱的是它那个内置搜索引擎。搜相册编号、姓名、留言关键词，会把一些内网路径和数据库备份标题也翻出来，什么缺席名单、留言恢复、后台备注全混在公开结果里，特别搞笑。</p>
             <p class="link-line">
@@ -96,30 +97,30 @@
             <span>旧网盘考古</span>
           </div>
           <div class="post-body">
-            <time>2026-05-25 23:13</time>
+            <time data-day="yesterday" data-clock="23:13">2026-05-25 23:13</time>
             <p>这类站进去看看就行，别在搜索框以外乱点。看起来像纪念站，结果很多页面权限标识都是空的。</p>
           </div>
         </article>
 
-        <article class="forum-post">
+        <article class="forum-post" data-forum-floor="5">
           <div class="post-user">
             <strong>5楼</strong>
             <span>404今天也在</span>
           </div>
           <div class="post-body">
-            <time>2026-05-26 00:02</time>
+            <time data-day="today" data-clock="00:02">2026-05-26 00:02</time>
             <p>我点了，确实很旧。那个访问计数器还在跳，但留言时间都停在几年前。搜索“缺席”会出来一些很不像公开网页的东西。</p>
           </div>
         </article>
 
-        <article class="forum-post quiet-post">
+        <article class="forum-post quiet-post" data-forum-system>
           <div class="post-user">
             <strong>系统提示</strong>
             <span>推荐算法</span>
           </div>
           <div class="post-body">
-            <time>2026-05-26 02:16</time>
-            <p>该主题已根据你的浏览记录置顶。</p>
+            <time data-day="today" data-clock="02:16">2026-05-26 02:16</time>
+            <p data-system-message>该主题已根据你的浏览记录置顶。</p>
           </div>
         </article>
       </section>
@@ -129,5 +130,49 @@
       <p class="footer-meta">黑箱同城 · 页面缓存来自公开主题索引 · 当前会话：guest_xiaoyun<span class="page-index-note">ex1/10</span></p>
     </footer>
   </div>
+  <script>
+    (() => {
+      const pad = (value) => String(value).padStart(2, "0");
+      const formatDate = (date) => [
+        date.getFullYear(),
+        pad(date.getMonth() + 1),
+        pad(date.getDate())
+      ].join("-");
+      const now = new Date();
+      const yesterday = new Date(now);
+
+      yesterday.setDate(yesterday.getDate() - 1);
+
+      const localDates = {
+        today: formatDate(now),
+        yesterday: formatDate(yesterday)
+      };
+      const minutesSinceMidnight = now.getHours() * 60 + now.getMinutes();
+      const warningMessage = "据统计不睡觉玩恐怖游戏会导致猝死，本2兔推荐你睡醒了再玩会有更好的游戏体验";
+      const floorFivePost = document.querySelector('[data-forum-floor="5"]');
+      const systemPost = document.querySelector("[data-forum-system]");
+      const systemTime = systemPost?.querySelector("time");
+      const systemMessage = systemPost?.querySelector("[data-system-message]");
+
+      document.querySelectorAll("#thread .post-body time").forEach((timeElement) => {
+        const day = timeElement.dataset.day || "yesterday";
+        const clock = timeElement.dataset.clock || "00:00";
+        const localTimestamp = `${localDates[day]} ${clock}`;
+
+        timeElement.textContent = localTimestamp;
+        timeElement.dateTime = `${localDates[day]}T${clock}`;
+      });
+
+      if (floorFivePost) {
+        floorFivePost.hidden = minutesSinceMidnight < 2;
+      }
+
+      if (systemTime && systemMessage && minutesSinceMidnight < 5 * 60) {
+        systemTime.textContent = "时间异常";
+        systemTime.removeAttribute("datetime");
+        systemMessage.textContent = warningMessage;
+      }
+    })();
+  </script>
 </body>
 </html>

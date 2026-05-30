@@ -423,8 +423,24 @@ h1 {
 .layout {
   display: grid;
   grid-template-columns: 190px minmax(0, 1fr) 248px;
+  grid-template-areas:
+    "left content right"
+    "guestbook guestbook right";
   gap: 10px;
+  align-items: start;
   padding: 10px;
+}
+
+.left-column {
+  grid-area: left;
+}
+
+.content-column {
+  grid-area: content;
+}
+
+.right-column {
+  grid-area: right;
 }
 
 .panel {
@@ -564,18 +580,152 @@ h1 {
   font-size: 13px;
 }
 
+.guestbook-strip {
+  grid-area: guestbook;
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.guestbook-strip .panel {
+  margin-bottom: 0;
+}
+
+.guestbook-compose {
+  min-width: 0;
+}
+
+.guestbook-compose-body {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 6px;
+  padding: 8px;
+}
+
+.guestbook-compose label {
+  padding-top: 4px;
+  color: #665d4a;
+}
+
+.guestbook-compose input,
+.guestbook-compose textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #91845f;
+  background: #fffef4;
+  color: #2e2a22;
+  font-family: SimSun, "Songti SC", serif;
+  font-size: 13px;
+}
+
+.guestbook-compose input {
+  height: 26px;
+  padding: 3px 5px;
+}
+
+.guestbook-compose textarea {
+  grid-column: 1 / -1;
+  resize: vertical;
+  min-height: 84px;
+  padding: 5px;
+}
+
+.guestbook-compose button {
+  grid-column: 2;
+  height: 26px;
+  border: 1px solid #5c241d;
+  background: #8d2c20;
+  color: #fff8df;
+  font-family: SimSun, "Songti SC", serif;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.guestbook-toast {
+  position: fixed;
+  z-index: 30;
+  left: 50%;
+  top: 124px;
+  width: 210px;
+  border: 2px solid #17314e;
+  background: #fffbed;
+  color: #2e2a22;
+  box-shadow: 4px 4px 0 rgba(33, 59, 99, 0.28);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -8px);
+  transition: opacity 240ms ease, transform 240ms ease;
+}
+
+.guestbook-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.guestbook-toast-title {
+  padding: 4px 8px;
+  border-bottom: 1px solid #11283f;
+  background: #24486f;
+  color: #fff8df;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.guestbook-toast p {
+  margin: 0;
+  padding: 10px 12px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.message-list {
+  min-width: 0;
+  padding: 8px;
+}
+
 .message {
-  margin: 8px;
+  padding: 0 0 8px;
   border-bottom: 1px dotted #b9ad84;
 }
 
+.message + .message {
+  margin-top: 8px;
+}
+
+.message-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 3px 6px;
+  padding-bottom: 3px;
+}
+
 .message p {
-  padding: 0 0 3px;
+  padding: 0;
+}
+
+.message-author,
+.message-id,
+.message-role {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.message-id {
+  color: #6d654f;
+  font-family: "Courier New", SimSun, monospace;
+  font-size: 12px;
+}
+
+.message-role {
+  color: #7c1f1f;
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .message time {
-  display: block;
-  padding-bottom: 8px;
+  margin-left: auto;
   color: #6d654f;
   font-size: 12px;
 }
@@ -629,6 +779,108 @@ h1 {
   margin-bottom: 10px;
 }
 
+.call-record-copy {
+  font-family: "Courier New", SimSun, monospace;
+}
+
+.call-record-copy p {
+  padding: 7px 9px;
+  border-left: 3px solid #b9ad84;
+  background: #fff9df;
+}
+
+.chat-screenshot {
+  max-width: 520px;
+  margin: 8px auto 14px;
+  padding: 12px;
+  border: 1px solid #b9ad84;
+  background: #f7f0cf;
+  box-shadow: 0 8px 18px rgba(70, 51, 20, 0.16);
+}
+
+.chat-screenshot figcaption {
+  margin-bottom: 8px;
+  color: #6d654f;
+  font-family: "Courier New", SimSun, monospace;
+  font-size: 12px;
+  text-align: center;
+}
+
+.chat-window {
+  border: 1px solid #8f855f;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.72)),
+    #dfe8d8;
+  font-family: "Microsoft YaHei", SimSun, sans-serif;
+  overflow: hidden;
+}
+
+.chat-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 32px;
+  padding: 6px 10px;
+  border-bottom: 1px solid #aab49e;
+  background: #d8e1e7;
+  color: #263f57;
+  font-size: 12px;
+}
+
+.chat-titlebar time {
+  color: #617080;
+  white-space: nowrap;
+}
+
+.chat-message {
+  max-width: 76%;
+  margin: 12px 10px;
+}
+
+.chat-message strong {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 3px;
+  color: #6d654f;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.chat-user-id {
+  color: #8a8069;
+  font-family: "Courier New", SimSun, monospace;
+  font-size: 10px;
+}
+
+.chat-message p {
+  margin: 0;
+  padding: 8px 10px;
+  border: 1px solid #bdc8b5;
+  background: #fffdf2;
+  color: #2e2a22;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.chat-left {
+  margin-right: auto;
+}
+
+.chat-right {
+  margin-left: auto;
+}
+
+.chat-right strong {
+  justify-content: flex-end;
+}
+
+.chat-right p {
+  border-color: #a5b7d0;
+  background: #eaf2ff;
+}
+
 .roster-intro {
   padding-bottom: 8px;
 }
@@ -678,6 +930,86 @@ h1 {
 .odd-roster-row {
   color: #7c1f1f;
   font-weight: 700;
+}
+
+.deleted-roster-row td {
+  background: #eee5c0;
+  color: #8a8069;
+  font-family: "Courier New", SimSun, monospace;
+}
+
+.deleted-roster-row td:not(:first-child):empty::before {
+  content: "";
+  display: inline-block;
+  width: 46px;
+  border-top: 1px dotted #a79a74;
+  vertical-align: middle;
+}
+
+.diary-paper-page {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.35), transparent 26%),
+    linear-gradient(135deg, #d8c18c 0%, #eadcb4 52%, #c8aa72 100%);
+  color: #362817;
+  font-family: KaiTi, STKaiti, "Times New Roman", serif;
+}
+
+.diary-paper-wrap {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 36px 18px;
+}
+
+.diary-paper {
+  position: relative;
+  width: min(780px, 90vw);
+  min-height: 500px;
+  padding: 88px 78px 72px;
+  background:
+    linear-gradient(rgba(127, 91, 43, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(116, 81, 42, 0.04) 1px, transparent 1px),
+    #f3e6c4;
+  background-size: 100% 34px, 34px 100%, auto;
+  box-shadow:
+    0 18px 46px rgba(68, 45, 18, 0.26),
+    inset 0 0 42px rgba(116, 78, 33, 0.16);
+}
+
+.diary-paper::before {
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(103, 70, 31, 0.2);
+  content: "";
+  pointer-events: none;
+}
+
+.diary-paper p {
+  position: relative;
+  margin: 0;
+  font-size: 25px;
+  line-height: 2;
+}
+
+.diary-paper-note {
+  margin-top: 28px;
+  color: #6d4d26;
+  font-size: 18px;
+  text-align: right;
+}
+
+@media (max-width: 640px) {
+  .diary-paper {
+    width: min(560px, 94vw);
+    min-height: 420px;
+    padding: 64px 36px 50px;
+  }
+
+  .diary-paper p {
+    font-size: 21px;
+  }
 }
 
 .restricted-page {
@@ -860,6 +1192,41 @@ h1 {
   border-top: 1px solid #6582a3;
 }
 
+.input-history-menu {
+  position: absolute;
+  z-index: 40;
+  border: 1px solid #6f654d;
+  background: #fffef4;
+  box-shadow: 3px 3px 0 rgba(33, 59, 99, 0.18);
+  font-family: SimSun, "Songti SC", serif;
+}
+
+.input-history-item {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 5px 8px;
+  border: 0;
+  border-bottom: 1px dotted #c9bd94;
+  background: transparent;
+  color: #2e2a22;
+  font: inherit;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.input-history-item:last-child {
+  border-bottom: 0;
+}
+
+.input-history-item:hover,
+.input-history-item:focus {
+  background: #fff2b3;
+}
+
 .admin-page {
   min-height: 100vh;
   background: #e6ebf0;
@@ -961,6 +1328,13 @@ h1 {
   color: #1f2933;
   font: inherit;
   padding: 6px 8px;
+}
+
+.admin-field-hint {
+  margin: -3px 0 2px;
+  padding: 0;
+  color: #657386;
+  font-size: 12px;
 }
 
 .admin-login-form button,
@@ -2228,6 +2602,10 @@ h1 {
   background: #e8edf4;
 }
 
+.baike-portrait.baike-avatar img {
+  aspect-ratio: 1 / 1;
+}
+
 .baike-portrait figcaption {
   margin-top: 8px;
   color: #727d8c;
@@ -2356,10 +2734,28 @@ h1 {
 
   .layout {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "left"
+      "content"
+      "guestbook"
+      "right";
   }
 
   .photo-grid {
     grid-template-columns: 1fr;
+  }
+
+  .guestbook-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .guestbook-compose button {
+    grid-column: 1 / -1;
+  }
+
+  .message time {
+    width: 100%;
+    margin-left: 0;
   }
 
   .album-wall {

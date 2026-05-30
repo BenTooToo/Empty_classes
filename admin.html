@@ -21,10 +21,11 @@
         <h2 id="loginTitle">管理员登录</h2>
         <form class="admin-login-form" id="adminLoginForm" autocomplete="off">
           <label for="adminUsername">用户名</label>
-          <input id="adminUsername" name="username" type="text" required>
+          <input id="adminUsername" name="username" type="text" required data-history-key="admin-username">
 
           <label for="adminPassword">密码</label>
-          <input id="adminPassword" name="password" type="password" required>
+          <input id="adminPassword" name="password" type="password" required aria-describedby="passwordHint" data-history-key="admin-password">
+          <p class="admin-field-hint" id="passwordHint">密码只支持英语小写。</p>
 
           <button type="submit">登录</button>
           <p class="admin-message" id="adminMessage" role="status" aria-live="polite"></p>
@@ -49,5 +50,6 @@
   </div>
 
   <script src="admin.js"></script>
+  <script src="input-history.js"></script>
 </body>
 </html>

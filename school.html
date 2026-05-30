@@ -17,7 +17,7 @@
         <form class="site-search" id="siteSearch" autocomplete="off">
           <label for="searchInput">资料检索</label>
           <div class="search-row">
-            <input id="searchInput" name="q" type="search" placeholder="输入姓名、相册、留言或记录">
+            <input id="searchInput" name="q" type="search" placeholder="输入姓名、相册、留言或记录" data-history-key="site-search">
             <button type="submit">搜索</button>
           </div>
         </form>
@@ -60,9 +60,10 @@
       <section class="content-column">
         <section class="notice panel" id="notice">
           <h2>本站公告</h2>
-          <p class="stamp">[2020-11-03] 公告</p>
+          <p class="stamp">[2020-11-03] </p>
           <p>因免费空间即将到期，本站将停止继续维护。资料整理完成后，部分页面会转为静态存档，留言簿不再开放新回复。</p>
           <p>如有同学希望补充合照、改名记录、或转学记录，请在关闭前通过站内搜索找到对应页面，再按页面备注提交。</p>
+          <p>如果想要查看往期重要信息，请在本站的搜索框里搜索“<b>公告</b>”。</p>
         </section>
 
         <section class="panel" id="album">
@@ -91,21 +92,50 @@
             </article>
           </div>
         </section>
+      </section>
+
+      <section class="guestbook-strip">
+        <form class="guestbook-compose panel compact" id="guestbookCompose" aria-label="发表留言">
+          <h2>发表留言</h2>
+          <div class="guestbook-compose-body">
+            <label for="guestbookName">昵称</label>
+            <input id="guestbookName" name="guestbookName" type="text" value="匿名" data-history-key="guestbook-name">
+            <label for="guestbookMessage">留言</label>
+            <textarea id="guestbookMessage" name="guestbookMessage" rows="5" data-history-key="guestbook-message"></textarea>
+            <button type="button" id="guestbookSubmit">发表</button>
+          </div>
+        </form>
 
         <section class="panel" id="guestbook">
           <h2>留言簿摘录</h2>
-          <article class="message">
-            <p><strong>老周：</strong>十年真快啊，之前的教室照片还有人有原图吗？我这边只有压缩版。</p>
-            <time>2020-05-29 18:42</time>
-          </article>
-          <article class="message">
-            <p><strong>资料组：</strong>旧留言正在从备份里恢复，重复、乱码和空白楼层会统一清理。</p>
-            <time>2020-06-03 09:11</time>
-          </article>
-          <article class="message muted">
-            <p><strong>匿名：</strong>有些名字不是丢了，是被改掉了。</p>
-            <time>2020-06-08 00:17</time>
-          </article>
+          <div class="message-list">
+            <article class="message">
+              <div class="message-head">
+                <strong class="message-author">老周</strong>
+                <span class="message-id">guest1101</span>
+                <time>2020-05-29 18:42</time>
+              </div>
+              <p>十年真快啊，之前的教室照片还有人有原图吗？我这边只有压缩版。</p>
+            </article>
+            <article class="message">
+              <div class="message-head">
+                
+                <strong class="message-author">电脑之神</strong>
+                <span class="message-id">quietarchive</span>
+                <span class="message-role">[管理员]</span>
+                <time>2020-06-03 09:11</time>
+              </div>
+              <p>旧留言正在从备份里恢复，重复、乱码和空白楼层会统一清理。</p>
+            </article>
+            <article class="message muted">
+              <div class="message-head">
+                <strong class="message-author">匿名</strong>
+                <span class="message-id">guest0608</span>
+                <time>2020-06-08 00:17</time>
+              </div>
+              <p>bug太多了啊，在不修就来不及了</p>
+            </article>
+          </div>
         </section>
       </section>
 
@@ -139,6 +169,12 @@
     </div>
   </div>
 
+  <div class="guestbook-toast" id="guestbookToast" role="status" aria-live="polite">
+    <div class="guestbook-toast-title">系统提示</div>
+    <p>留言功能已关闭。</p>
+  </div>
+
   <script src="search.js"></script>
+  <script src="input-history.js"></script>
 </body>
 </html>

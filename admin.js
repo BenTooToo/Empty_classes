@@ -2,8 +2,8 @@ const accounts = [
   {
     id: "monitor",
     displayName: "班长",
-    aliases: ["northdoor"],
-    passwords: ["silentbell"],
+    aliases: ["admin-07"],
+    passwords: ["damao"],
     href: "pages/admin-monitor-dashboard.html"
   },
   {
