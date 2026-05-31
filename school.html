@@ -11,7 +11,7 @@
     <header class="site-header">
       <div class="header-main">
         <div>
-          <h1>折棠6中同窗录</h1>
+          <h1><a class="site-home-link" href="school.html">折棠6中同窗录</a></h1>
         </div>
 
         <form class="site-search" id="siteSearch" autocomplete="off">
@@ -78,14 +78,14 @@
             </article>
             <article class="photo-slot">
               <div class="photo-frame">
-                <img src="dimpome.png" alt="毕业前的教室合照">
+                <img class="photo-preview-trigger" src="dimpome.png" alt="毕业前的教室合照" tabindex="0" role="button" aria-label="放大查看：毕业前的教室合照">
               </div>
               <h3>毕业前的教室</h3>
               <p>最后一次班会后</p>
             </article>
             <article class="photo-slot">
               <div class="photo-frame">
-                <img src="credit.png" alt="窗边看到的熟悉街景">
+                <img class="photo-preview-trigger" src="credit.png" alt="窗边看到的熟悉街景" tabindex="0" role="button" aria-label="放大查看：窗边看到的熟悉街景">
               </div>
               <h3>熟悉的街景</h3>
               <p>维护员于 2024 年重新编号。</p>
@@ -155,6 +155,10 @@
       <p>折棠6中同窗录 · 非公开纪念站 · 页面编码 UTF-8</p>
       <p class="footer-meta">建议使用 1024×768 分辨率浏览。部分早期资料仍在整理。<span class="page-index-note">1/40</span></p>
     </footer>
+  </div>
+
+  <div class="photo-lightbox" id="photoLightbox" role="dialog" aria-modal="true" aria-label="照片预览" aria-hidden="true" tabindex="-1">
+    <img id="photoLightboxImage" src="" alt="">
   </div>
 
   <div class="search-modal" id="searchModal" aria-hidden="true">

@@ -6,10 +6,10 @@ const searchRecords = [
     keys: ["公告", "本站公告"]
   },
   {
-    title: "本站公告：请勿散播谣言",
+    title: "请勿散播谣言",
     type: "公告",
     href: "pages/04-stop-maintenance-notice.html",
-    keys: ["公告", "本站公告", "班长公告", "幽灵女孩", "谣言", "恶作剧", "女高三生"]
+    keys: ["公告", "本站公告"]
   },
   {
     title: "福安饭心理咨询服务推荐",
@@ -27,7 +27,13 @@ const searchRecords = [
     title: "折棠市第六中学",
     type: "黑箱百科",
     href: "pages/06-zhetang-six-intro.html",
-    keys: ["折棠6中", "折棠六中", "折棠市", "折棠市第六中学", "学校介绍", "黑箱百科"]
+    keys: ["折棠6中", "折棠六中", "折棠市", "折棠市第六中学"]
+  },
+  {
+    title: "管理员登录",
+    type: "站点入口",
+    href: "admin.html",
+    keys: ["管理员"]
   },
   {
     title: "管理员账户登录：信息委员",
@@ -100,6 +106,12 @@ const searchRecords = [
     type: "新闻报道",
     href: "pages/14-news-missing-girl.html",
     keys: ["新闻报道", "女高三生", "媛媛失踪", "某区十大悬案"]
+  },
+  {
+    title: "悬案：学校网站惊现幽灵少女",
+    type: "娱乐新闻",
+    href: "pages/29-ghost-girl-news.html",
+    keys: ["幽灵少女", "悬案"]
   },
   {
     title: "新闻报道：学生离奇自杀",
@@ -260,3 +272,61 @@ if (guestbookForm) {
     showGuestbookClosedToast();
   });
 }
+
+const photoPreviewTriggers = document.querySelectorAll(".photo-preview-trigger");
+const photoLightbox = document.querySelector("#photoLightbox");
+const photoLightboxImage = document.querySelector("#photoLightboxImage");
+let activePhotoPreviewTrigger;
+
+function openPhotoLightbox(photo) {
+  if (!photoLightbox || !photoLightboxImage) {
+    return;
+  }
+
+  activePhotoPreviewTrigger = photo;
+  photoLightboxImage.src = photo.currentSrc || photo.src;
+  photoLightboxImage.alt = photo.alt;
+  photoLightbox.classList.add("is-open");
+  photoLightbox.setAttribute("aria-hidden", "false");
+  document.body.classList.add("photo-lightbox-open");
+  photoLightbox.focus();
+}
+
+function closePhotoLightbox() {
+  if (!photoLightbox || !photoLightboxImage) {
+    return;
+  }
+
+  photoLightbox.classList.remove("is-open");
+  photoLightbox.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("photo-lightbox-open");
+  photoLightboxImage.removeAttribute("src");
+  activePhotoPreviewTrigger?.focus();
+}
+
+photoPreviewTriggers.forEach((photo) => {
+  photo.addEventListener("click", () => {
+    openPhotoLightbox(photo);
+  });
+
+  photo.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openPhotoLightbox(photo);
+    }
+  });
+});
+
+if (photoLightbox) {
+  photoLightbox.addEventListener("click", (event) => {
+    if (event.target === photoLightbox) {
+      closePhotoLightbox();
+    }
+  });
+}
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && photoLightbox?.classList.contains("is-open")) {
+    closePhotoLightbox();
+  }
+});
