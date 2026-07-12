@@ -9,13 +9,13 @@ const dashboardRoles = {
     title: "美术委员后台",
     theme: "dark",
     dashboard: "admin-art-dashboard.html",
-    files: ["art-profile", "art-news", "ritual-note", "class-album", "shadow-exchange-ritual"]
+    files: ["art-diary", "soul-return-ritual"]
   },
   sports: {
     title: "体育委员后台",
     theme: "dark",
     dashboard: "admin-sports-dashboard.html",
-    files: ["familiar-handwriting", "hospital-report", "sports-info-removal", "sports-familiar-handwriting"]
+    files: ["hospital-report", "sports-info-removal", "sports-familiar-self"]
   },
   info: {
     title: "信息委员后台",
@@ -86,6 +86,61 @@ const fileRecords = {
         <dt>修改内容</dt>
         <dd>已成功从学生名单中移除：林缘</dd>
       </dl>
+    `
+  },
+  "soul-return-ritual": {
+    title: "奥摩耶他返魂仪式详解",
+    html: `
+      <article class="role-ritual-document" data-ritual-completion>
+        <h2>奥摩耶他返魂仪式</h2>
+        <div class="ritual-committee-watermark" aria-hidden="true">
+          <svg viewBox="0 0 300 300" role="img">
+            <defs><path id="returnWatermarkPath" d="M 34,150 A 116,116 0 1,1 266,150 A 116,116 0 1,1 34,150"></path></defs>
+            <circle class="watermark-ring-outer" cx="150" cy="150" r="132"></circle>
+            <circle class="watermark-ring-inner" cx="150" cy="150" r="103"></circle>
+            <text class="watermark-ring-text"><textPath href="#returnWatermarkPath" startOffset="8%">由赫伊希尔委员会修正　·　由赫伊希尔委员会修正　·　</textPath></text>
+            <path class="watermark-eye" d="M65 151 Q150 78 235 151 Q150 224 65 151Z"></path>
+            <circle class="watermark-iris" cx="150" cy="151" r="42"></circle>
+            <circle class="watermark-pupil" cx="150" cy="151" r="18"></circle>
+            <circle class="watermark-glint" cx="137" cy="137" r="7"></circle>
+          </svg>
+        </div>
+        <p class="ritual-document-preface">本仪式为奥摩耶他降魂仪式之反转仪式，用于取回先前被献祭者的灵魂。返魂并非撤销代价，而是以新的祭品完成等价交换。执行者必须完整知晓原仪式的参与名单，并在开始前阅读全部条目。</p>
+        <section>
+          <h3>时间</h3>
+          <p><strong>原仪式完成之日的周年夜，子时至丑时之间。</strong></p>
+          <p>太阳必须完全缺席，月光不得直接照入仪式场所。返魂须在第一声钟响后开始，并在最后一支蜡烛燃尽前完成；错过时限者应等待下一次周年夜。</p>
+        </section>
+        <section>
+          <h3>地点</h3>
+          <p>返魂必须在<strong>最初献祭发生之处</strong>进行。符咒中心应与原被献祭者最后停留的位置重合，门窗全部关闭，现场不得有未参与原仪式者旁观。</p>
+          <p>若原地点已经损毁、改建或无法辨认，不得以相似地点代替。错误的地点只会唤回不属于被献祭者的东西。</p>
+        </section>
+        <section>
+          <h3>准备与代价</h3>
+          <p><strong>一、原仪式全部参与者的灵魂。</strong></p>
+          <p><strong>二、原被献祭者遗留之物一件。</strong></p>
+          <p><strong>三、倒置的奥摩耶他符咒一份。</strong></p>
+          <p>全部参与者的灵魂将被同时献出，以此换回被献祭者完整的灵魂。无论参与者在原仪式中获得了什么、是否仍记得仪式、是否自愿返还，均不影响代价的收取。</p>
+        </section>
+        <section>
+          <h3>特例：被神明抛弃者</h3>
+          <p>原仪式中<strong>未被神明接受、愿望未被实现之人，不属于仪式参与者</strong>。此人已被神明遗忘，其灵魂不在返魂所需的祭品之列。</p>
+          <p>执行返魂时，无须也不得献出被抛弃者的灵魂。将其强行写入名单可能使返还的灵魂出现缺损。</p>
+        </section>
+        <section>
+          <h3>仪式步骤</h3>
+          <p>将遗留之物置于倒置符咒正中，依原仪式站位写下全部有效参与者的姓名。施法者最后进入符咒，在钟声停止前依次抹去姓名，使其灵魂归入中心祭品。</p>
+          <p>当全部姓名消失后，施法者应呼唤被献祭者的姓名三次。不得回答符咒外传来的声音，也不得在被献祭者睁眼前离开原位。</p>
+        </section>
+        <section>
+          <h3>结果与施法者的愿望</h3>
+          <p>交换完成后，被献祭者的灵魂将被带回，并重新归于其原本的身体。若身体已不复存在，灵魂会选择与其联系最深的可容之物。</p>
+          <p>作为完成返魂的见证者，<strong>施法者可在被献祭者复活的同时实现一个愿望</strong>。愿望不需要说出口；奥摩耶他读取的仍是施法者灵魂最深处的欲望。</p>
+          <p>愿望一经读取，不可撤回。返魂完成后，所有作为代价献出的灵魂亦不可再次取回。</p>
+        </section>
+        <a class="ritual-reversal-button" href="23-true-ending.html">做好准备，进行逆转仪式</a>
+      </article>
     `
   },
   "shadow-exchange-ritual": {
@@ -173,6 +228,20 @@ const fileRecords = {
       <p>页面末尾有一行损坏代码：<strong>符咒代码</strong>。它指向一个被删掉的画作页面，只有信息委员的备份里还留着副本。</p>
     `
   },
+  "art-diary": {
+    title: "美术委员日记",
+    html: `
+      <article class="role-diary-paper art-villain-diary">
+        <p>最开始，我只是在黑箱论坛里找能让事业顺利一点的办法。没想到那篇帖子写的东西竟然是真的。</p>
+        <p>我把内容给了梁致远，又告诉他该怎么准备符咒。他果然上钩了。只需要让他觉得自己才是组织者，他就会替我召集所有人、准备地点，还会心甘情愿地承担风险。</p>
+        <p>我对结果很满意。大家都拿到了自己想要的东西：我得到了事业上的成功，梁致远的两个朋友得到了钱财。至于梁致远那个傻瓜，到最后竟然还在装善良，许下的愿望居然是<strong>让所有人忘记这件事发生过</strong>。</p>
+        <p>最大的变数一直是林媛。被献祭者同样能够实现愿望，如果她想要的是报复，那我们就全完了。所以我才特地选了她——班里出了名的老好人。像她那样的人，即使到了最后，也只会希望别人过得好。</p>
+        <p>倒是肖青让我有点在意。我不知道他许了什么愿望，问他，他也不肯说。还是得好好观察他。</p>
+        <p>如果他真的会坏事，那就再献祭一次，把他除掉。</p>
+        <p class="role-file-signature">2016年7月10日　林若萱</p>
+      </article>
+    `
+  },
   "class-album": {
     title: "班级相册",
     html: `
@@ -184,16 +253,6 @@ const fileRecords = {
         <figure><img src="../art.png" alt="美术相关照片"><figcaption>林若萱是我们的骄傲</figcaption></figure>
         <figure><img src="../computer.png" alt="机房照片"><figcaption>大家最喜欢的地方</figcaption></figure>
       </div>
-    `
-  },
-  "familiar-handwriting": {
-    title: "日记",
-    html: `
-      <article class="role-diary-paper">
-      <p>这份日记没有署名，但后台归档信息显示创建者为肖青。第一页只写了四个字：<strong>坦白真相</strong>。</p>
-      <p>后面的句子断断续续：“我也是旁观者的一份子，我就是那第七个人。其他人一个一个全部都死了，这一定是她的灵魂在作祟。”</p>
-      <p>后面的几页存在大量撕毁痕迹，只能辨认出“镜子”“愿望”和“最后一个人”。</p>
-      </article>
     `
   },
   "hospital-report": {
@@ -220,16 +279,16 @@ const fileRecords = {
       </dl>
     `
   },
-  "sports-familiar-handwriting": {
-    title: "熟悉的字迹",
+  "sports-familiar-self": {
+    title: "熟悉的自己",
     html: `
       <article class="role-diary-paper">
-        <p>我没有实现自己的愿望，因为我根本就没有愿望。</p>
-        <p>我知道林媛是真实存在的。她不是他们说的幻觉，也不是一个被写错的名字。她是我的朋友。</p>
-        <p>可是我能够感觉到自己的记忆正在一点一点丧失。以前记得很清楚的事情，现在只剩下模糊的影子。有时我甚至不知道自己为什么会出现在这里，也不知道镜子里的人究竟是谁。</p>
-        <p>我好痛苦。</p>
-        <p>我该怎么办？</p>
-        <p class="role-file-signature">肖青</p>
+        <p>我和林媛是被班长邀请去参加那场仪式的。班长威胁我，说除非我把林媛带过来，否则就要献祭我。我没有想到仪式竟然是真的，更没有想到林媛真的会消失。</p>
+        <p>据说参加仪式的每个人都可以实现愿望，包括林媛。可是，只有我的愿望没有实现。难道这就是神明对我的惩罚？</p>
+        <p>我感觉最近自己的记忆力和判断力越来越糟糕。希望这不是某个人许下的愿望吧……</p>
+        <p>如果可以的话，我会请信息委员黑掉美术委员的账号。据说仪式的具体信息都在她的账号里。但是我现在真的好累。等明天如果感觉好一点，我就这么做吧。</p>
+        <p class="role-file-signature">2016-07-20　肖青</p>
+        <p class="truth-revealed"><a href="34-author-note.html">恭喜你，查明了事情的真相，肖青。</a></p>
       </article>
     `
   },

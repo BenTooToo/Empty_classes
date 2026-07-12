@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>煎饼控制系统有限公司【官方网站】</title>
+  <link rel="stylesheet" href="../pancake-control.css">
+</head>
+<body>
+  <nav>
+    <a href="#about">关于我们</a>
+    <a href="#business">业务查询</a>
+    <a href="#join">加入我们</a>
+  </nav>
+
+  <main>
+    <section class="hero-box">
+      <div class="hero-copy">
+        <p class="fake-award">★ 初创企业 · 永久老字号 ★</p>
+        <h1>让每一张煎饼<br>得到它应当控制</h1>
+        <p>本公司是从事煎饼制造、煎饼思想整理和圆形食品风险消除的现代化公司。我们交付温度，也回收原因。</p>
+        <button type="button" onclick="alert('查询失败：煎饼目前不在这个世界。')">立即购买煎饼</button>
+      </div>
+      <figure class="image-slot hero-image">
+        <img src="../pics/pan1.png" alt="黄油与糖浆煎饼产品图">
+      </figure>
+    </section>
+
+    <div class="ticker"><b>重要：</b>由于业障波动，今日所有煎饼均按昨日明天价格结算。客服不会回答关于“味道”的询问。</div>
+
+    <section id="about" class="content-panel yellow-panel">
+      <h2>一、关于我们 ABOUT PANCAKE US</h2>
+      <div class="two-columns">
+        <div>
+          <p>煎饼控制系统有限公司成立于一个适合成立的日期。注册资本很多，实际资本请不要触摸。公司坚持“把煎饼做成煎饼以前”的经营思想，为家庭、工厂、走廊及不确定客户提供高兴服务。</p>
+          <p>我们拥有先进的煎饼控制设备，设备暂时没有通电。通过对面粉的友好劝说，公司已经形成研发、生产、运输、遗忘的一条龙体系。</p>
+          <table>
+            <tr><th>产品</th><th>规格</th><th>存在状态</th></tr>
+            <tr><td>标准煎饼</td><td>一个圆</td><td>等待确认</td></tr>
+            <tr><td>企业煎饼</td><td>比较圆</td><td>已经听说</td></tr>
+            <tr><td>控制煎饼</td><td>不要测量</td><td class="red-text">不在此世界</td></tr>
+          </table>
+        </div>
+        <figure class="image-slot">
+          <img src="../pics/pan2.png" alt="煎饼产品展示图">
+        </figure>
+      </div>
+    </section>
+
+    <section class="content-panel rule-panel">
+      <h2>煎饼生产访问规则（必须阅读）</h2>
+      <ol>
+        <li>我们喜欢煎饼。</li>
+        <li>如果不小心看到了烤糊了的煎饼，请立即打电话给最近的屠宰场。</li>
+        <li>煎饼不存在于这个世界。</li>
+        <li>我们喜欢煎饼的行为，而不是味道。</li>
+        <li>本公司完全独立于所有其他机构。</li>
+        <li>费用的收取基于对于业障的干涉。</li>
+      </ol>
+      <p class="rule-warning">若第 1 条与第 3 条同时发生，请保持正常上班，不要让煎饼发现。</p>
+    </section>
+
+    <section id="business" class="content-panel blue-panel">
+      <h2>二、业务查询 / MONEY BUSINESS</h2>
+      <p>请输入需要查询的位置。本系统只理解道路和房屋，不理解住户。</p>
+      <form class="address-query" id="addressQuery">
+        <label>道路的名称 <input type="text" name="road" placeholder="例如：和平路" required></label>
+        <label>房屋的编号 <input type="text" name="house-number" placeholder="例如：17号" required></label>
+        <button type="submit">查询</button>
+      </form>
+      <div class="contact-box">注意：如果查询位置不存在本公司服务，则什么也不会发生。</div>
+    </section>
+
+    <section id="join" class="content-panel pink-panel">
+      <h2>三、加入我们 / JOIN PANCAKE FAMILY</h2>
+      <div class="join-ad">
+        <p>喜欢煎饼但是被高昂的价格所困扰？</p>
+        <p>吃饭的时候经常被水噎着？</p>
+        <p>在陌生人面前总是非常害羞？</p>
+        <strong>加入兼并控制系统有限公司，<br>你的业障就是我们的粮食。</strong>
+      </div>
+      <div class="jobs">
+        <div><b>煎饼观察员</b><span>要求：能看见圆形</span><button onclick="alert('该岗位已经被煎饼录用。')">投递</button></div>
+        <div><b>业障收银员</b><span>要求：不询问货币</span><button onclick="alert('简历已发送至错误部门。')">投递</button></div>
+        <div><b>夜班不存在员</b><span>要求：独立于其他机构</span><button onclick="alert('你已于昨天入职。')">投递</button></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="pancake-modal" id="pancakeQueryModal" aria-hidden="true">
+    <section class="pancake-dialog" role="dialog" aria-modal="true" aria-labelledby="queryDialogTitle">
+      <div id="queryConfirmStep">
+        <h2 id="queryDialogTitle">业务费用计算结果</h2>
+        <p>根据计算，你将会被安装<strong>三个摄像头</strong>，是否同意？</p>
+        <div class="dialog-actions">
+          <button type="button" data-query-confirm>是</button>
+          <button type="button" data-query-confirm>确认</button>
+        </div>
+      </div>
+
+      <div id="queryLoadingStep" hidden>
+        <h2>监控服务正在工作</h2>
+        <p>正在实时为你调取监控录像的</p>
+        <div class="loading-track" aria-label="监控录像加载进度">
+          <div class="loading-bar" id="surveillanceLoadingBar"></div>
+        </div>
+        <p class="loading-number" id="surveillanceLoadingNumber">0%</p>
+      </div>
+
+      <div id="queryResultStep" hidden>
+        <h2>实时监控录像</h2>
+        <figure class="surveillance-placeholder">
+          <span>监控画面预留位置<br><small>pics/pancake-surveillance.jpg</small></span>
+          <img src="../pics/pancake-surveillance.jpg" alt="苍松7路78号实时监控画面" onerror="this.style.display='none'">
+        </figure>
+        <button type="button" id="closeQueryModal">关闭窗口</button>
+      </div>
+    </section>
+  </div>
+
+  <aside class="installation-invite" id="installationInvite" aria-hidden="true" aria-labelledby="installationInviteTitle">
+    <div class="invite-sender">煎饼6号</div>
+    <button type="button" class="invite-close" id="closeInstallationInvite" aria-label="关闭安装预约">×</button>
+    <h2 id="installationInviteTitle">煎饼6号邀请你预约三个摄像头的安装时间</h2>
+    <p>安装地点：<strong>你的卧室</strong></p>
+    <div class="invite-times">
+      <button type="button" data-installation-time="00:15">00:15</button>
+      <button type="button" data-installation-time="2:15">2:15</button>
+    </div>
+  </aside>
+
+  <script src="../pancake-control.js"></script>
+
+</body>
+</html>

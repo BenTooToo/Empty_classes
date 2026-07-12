@@ -84,6 +84,12 @@ const searchRecords = [
     keys: ["哈希", "哈希函数", "hash","哈希加密"]
   },
   {
+    title: "煎饼控制系统有限公司官方网站",
+    type: "企业官网",
+    href: "pages/35-pancake-control.html",
+    keys: ["煎饼", "煎饼控制系统", "煎饼控制有限公司", "煎饼控制系统有限公司"]
+  },
+  {
     title: "突发",
     type: "娱乐新闻",
     href: "pages/25-lin-ruoxuan-news.html",
