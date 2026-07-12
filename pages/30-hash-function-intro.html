@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>哈希函数_黑箱百科</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="baike-page">
+  <div class="baike-shell">
+    <div class="baike-topbar">
+      <span>黑箱百科 · 公共知识条目</span>
+    </div>
+
+    <header class="baike-header">
+      <div class="baike-brand-row">
+        <div class="baike-logo">黑箱<span>百科</span></div>
+      </div>
+    </header>
+
+    <main class="baike-main">
+      <article class="baike-article">
+        <p class="baike-breadcrumb">黑箱百科 &gt; 技术 &gt; 基础概念 &gt; 哈希函数</p>
+
+        <div class="baike-title-row">
+          <h1>哈希函数</h1>
+          <span class="baike-subtitle">把信息变成“指纹”的方法</span>
+        </div>
+
+        <div class="baike-tags" aria-label="词条标签">
+          <span>基础概念</span>
+          <span>密码与校验</span>
+          <span>玩家说明</span>
+        </div>
+
+        <section class="baike-summary" aria-label="词条摘要">
+          <p>哈希函数可以理解成一台“信息压缩机”：不管你输入一句话、一张图片，还是一串密码，它都会吐出一段固定长度的结果。</p>
+          <p>这段结果通常叫哈希值。它不负责保存原文，只像一个简短的指纹，用来代表原来的内容。</p>
+        </section>
+
+        <section class="baike-section" id="how-it-works">
+          <h2>简单原理</h2>
+          <p>哈希函数会按照固定规则处理输入内容。只要输入完全一样，得到的哈希值也会一样；只要输入稍微变一点，结果通常就会变得很不一样。</p>
+          <p>可以把它想成盖章：同一份纸每次都会盖出同一个章，但如果纸上的字改了一个，系统就会认出这已经不是原来的那份。</p>
+        </section>
+
+        <section class="baike-section" id="why-use-it">
+          <h2>它有什么用</h2>
+          <ul class="baike-timeline">
+            <li><strong>确认内容没变</strong><span>下载文件后，可以比对哈希值，判断文件有没有被改过。</span></li>
+            <li><strong>保存密码线索</strong><span>网站通常不直接保存明文密码，而是保存密码算出来的哈希值。</span></li>
+            <li><strong>快速查找资料</strong><span>系统可以用哈希值给资料编号，让查找和比对更快。</span></li>
+          </ul>
+        </section>
+
+        <section class="baike-section" id="password">
+          <h2>和密码的关系</h2>
+          <p>登录时，系统不会非要记住你的原密码。它可以把你输入的密码再算一次哈希值，然后拿这个结果和记录里的结果比较。</p>
+          <p>如果两个哈希值一样，系统就认为你输入的是同一个密码。这样做的好处是，就算有人看到记录，也不一定能直接看出原密码是什么。</p>
+        </section>
+
+        <section class="baike-section" id="notice">
+          <h2>需要记住的事</h2>
+          <p>严格来说，哈希函数不是可以用钥匙解开的加密箱。它更像单向指纹：从原文得到指纹很容易，但从指纹反推出原文很难。</p>
+          <p>旧站里把相关工具叫作“哈希加密器”。看到这个名字时，可以先把它理解成：程序正在把输入内容算成指纹。如果有人把指纹再输入一次，就会得到新的指纹。</p>
+        </section>
+
+        <section class="baike-reference">
+          <p>资料来源：基础计算机知识整理，面向玩家理解进行了简化。</p>
+        </section>
+      </article>
+
+      <aside class="baike-sidebar" aria-label="词条信息栏">
+        <section class="baike-infobox">
+          <h2 class="baike-card-title">哈希函数</h2>
+          <dl class="baike-info-list">
+            <dt>常见别名</dt>
+            <dd>散列函数、Hash</dd>
+            <dt>核心作用</dt>
+            <dd>把输入变成固定长度的哈希值</dd>
+            <dt>常见用途</dt>
+            <dd>校验文件、保存密码、快速查找</dd>
+            <dt>理解重点</dt>
+            <dd>同样输入，同样结果；输入变了，结果也会变</dd>
+          </dl>
+        </section>
+
+        <section class="baike-side-note">
+          <p>本词条只解释游戏中需要理解的概念，不涉及真实算法细节。</p>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="baike-footer">
+      <p>黑箱百科 · 本页面为公共知识库条目 · 页面编码 UTF-8</p>
+    </footer>
+  </div>
+</body>
+</html>

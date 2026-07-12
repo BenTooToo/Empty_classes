@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>监控控制面板</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="surveillance-page">
+  <main class="surveillance-shell">
+    <header class="surveillance-header">
+      <a href="admin-info-dashboard.html">返回后台</a>
+    </header>
+    <section class="camera-list-panel" aria-labelledby="cameraListTitle">
+      <div class="old-window-title"><h2 id="cameraListTitle">监控点列表</h2><span>本机时间：<b id="surveillanceClock">--:--:--</b></span></div>
+      <div class="camera-table" role="table" aria-label="监控点状态">
+        <div class="camera-row camera-table-head" role="row"><span>编号</span><span>监控地点</span><span>状态</span><span>录像</span></div>
+        <div class="camera-row" role="row"><b>01</b><span>班长的卧室</span><em>连接正常</em><small>已归档</small></div>
+        <div class="camera-row" role="row"><b>02</b><span>美术委员的工作室门口</span><em>连接正常</em><small>已归档</small></div>
+        <div class="camera-row" role="row"><b>03</b><span>体育委员的卧室</span><em>连接正常</em><small>录像中</small></div>
+        <div class="camera-row" role="row"><b>04</b><span>班长朋友甲的大庄园门口</span><em>连接正常</em><small>录像中</small></div>
+        <div class="camera-row" role="row"><b>05</b><span>班长朋友乙的大庄园门口</span><em class="weak">信号较弱</em><small>录像中</small></div>
+      </div>
+      <p class="camera-list-note">已保存的录像请从右侧档案列表下载，并使用本地播放器查看。</p>
+    </section>
+    <aside class="recording-panel">
+      <div class="old-window-title"><h2>监控录像档案</h2><span>本地回放</span></div>
+      <div class="recording-archive-list" aria-label="可下载的监控录像">
+        <a class="recording-download" href="../vids/admin_room.mp4" download="CAM-01_班长的卧室.mp4">
+          <b>CAM-01</b>
+          <span>班长的卧室</span>
+          <small>MP4 · 下载录像</small>
+        </a>
+        <a class="recording-download" href="../vids/art_building_with%20sound.mp4" download="CAM-02_美术委员工作室.mp4">
+          <b>CAM-02</b>
+          <span>美术委员的工作室门口</span>
+          <small>MP4 · 含声音 · 下载录像</small>
+        </a>
+        <p class="recording-archive-help">点击档案开始下载。下载完成后，请在下载文件夹中使用本地播放器打开。</p>
+      </div>
+    </aside>
+    <footer class="surveillance-footer">本监控由煎饼控制系统有限公司维护</footer>
+  </main>
+  <script src="../surveillance.js"></script>
+</body>
+</html>

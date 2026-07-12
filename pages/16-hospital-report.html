@@ -3,36 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>医院报告单</title>
+  <title>折棠市第二人民医院 · 电子病历</title>
   <link rel="stylesheet" href="../styles.css">
 </head>
-<body>
-  <div class="page-shell">
-    <header class="site-header">
-      <div class="header-main">
-        <div>
-          <h1><a class="site-home-link" href="../school.html">折棠6中同窗录</a></h1>
-        </div>
-      </div>
-      <div class="old-nav site-status-bar">当前为只读镜像</div>
+<body class="hospital-record-page">
+  <div class="hospital-system-shell">
+    <header class="hospital-system-header">
+      <div class="hospital-mark">十</div>
+      <div><h1>折棠市第二人民医院</h1><p>电子病历查阅系统 · EMR 3.2</p></div>
+      <span>只读归档</span>
     </header>
-
-    <main class="article-layout">
-      <article class="panel article-panel">
-        <h2>医院报告单</h2>
-        <div class="article-copy">
-          <p>患者姓名：肖云。旧系统备注显示，该扫描件原本需要输入<strong>玩家真名</strong>才能查看，后来被管理员转成了纯文本备份。</p>
-          <p>主诉记录里写着：患者长期回避高三毕业前后的记忆，反复否认曾参与某次夜间外出。家属称其高考后情绪急剧波动，睡眠差，易惊醒。</p>
-          <p>医生初步判断为<strong>怀疑因为高考出现心理问题</strong>，但后续复诊中又记录了更具体的症状：患者会对“班长”“七个人”“小青”等词产生明显回避。</p>
-          <p>检查意见：<strong>出现失忆症状</strong>，建议心理咨询配合药物治疗。治疗方案栏写着：<strong>建议治疗方案：药物治疗</strong>。但报告最后另有手写字迹：“他不是忘了，是不敢想起来。”</p>
-        </div>
+    <nav class="hospital-system-nav">
+      <b>住院病历</b><span>患者档案</span><span>诊断记录</span><a href="admin-sports-dashboard.html">返回账号后台</a>
+    </nav>
+    <main class="hospital-record-main">
+      <aside class="hospital-patient-summary">
+        <h2>患者信息</h2>
+        <dl><dt>姓名</dt><dd>肖青</dd><dt>性别</dt><dd>男</dd><dt>病案号</dt><dd>ZT-160721</dd><dt>就诊科室</dt><dd>精神心理科</dd><dt>资料状态</dt><dd class="hospital-alert">长期随访</dd></dl>
+      </aside>
+      <article class="hospital-case-sheet">
+        <div class="hospital-case-title"><div><small>INPATIENT MEDICAL RECORD</small><h2>住院病历记录</h2></div><span>打印日期：2020-10-26</span></div>
+        <section><h3>主诉</h3><p>毕业后出现持续性记忆缺失，对高中毕业前约三个月及某次夜间集体活动无法形成连续回忆，伴随失眠、惊醒、回避谈话及身份混淆。</p></section>
+        <section><h3>现病史</h3><p><strong>第一阶段：</strong>患者在高考结束后出现持续性情绪低落、兴趣减退、睡眠障碍、自我否定及明显的社会退缩，符合抑郁症表现。病程中间歇出现精神病性症状，包括短暂幻听、被害感、对周围人物意图的错误判断，以及无法由现实证据纠正的恐惧。症状并非持续存在，发作间期患者能够维持基本交流与生活能力。</p><p><strong>第二阶段：</strong>此后患者逐渐出现针对高中毕业前特定时间段的记忆缺失，并伴随固定身份妄想。患者能够正常回忆早年生活、课程内容及普通同学关系，却无法说明毕业前夜的去向，也无法辨认与该事件相关的人员顺序。患者否认自己名为“肖青”，反复坚称自己是“肖云”，并将肖青描述为与自己无关的另一个人。</p></section>
+        <section><h3>精神检查</h3><p>意识清楚，定向力基本完整。即刻记忆和一般认知功能未见明显异常；对特定时间段存在边界清晰且持续的自传体记忆空白。多次提示与情景复述均未能恢复缺失内容，强行回忆时伴明显惊恐反应。</p></section>
+        <section class="hospital-diagnosis"><h3>临床诊断</h3><p><strong>第一阶段：抑郁症，伴间歇性精神病性症状。</strong></p><p><strong>第二阶段：解离性失忆症，伴身份妄想。</strong></p><p>诊断依据：记忆缺失集中于创伤相关事件，程度无法用普通遗忘解释；患者关于“肖云”身份的信念固定且无法通过学籍资料、照片及家属证言纠正；神经系统检查未发现足以解释上述症状的器质性异常。</p></section>
+        <section><h3>辅助检查</h3><p>头颅影像学检查未见明确器质性病变。基础神经认知测验正常。创伤相关词汇刺激测试中出现显著应激反应，建议避免在无专业人员陪同的情况下反复诱导回忆。</p></section>
+        <section><h3>治疗及随访建议</h3><p>建议接受长期心理治疗，以稳定情绪、建立安全感和逐步恢复记忆连续性为主要目标；根据抑郁、精神病性症状及睡眠障碍的变化，由精神科医师评估药物治疗方案。家属不得强迫患者接触相关旧物、照片或参与者名单，也不应直接与其争辩身份问题。</p></section>
       </article>
     </main>
-
-    <footer class="site-footer">
-      <p>折棠6中同窗录 · 非公开纪念站 · 页面编码 UTF-8</p>
-      <p class="footer-meta">建议使用 1024×768 分辨率浏览。部分早期资料仍在整理。<span class="page-index-note">15/40</span></p>
-    </footer>
+    <footer class="hospital-system-footer">院内病历资料　未经授权不得复制、修改或外传</footer>
   </div>
 </body>
 </html>

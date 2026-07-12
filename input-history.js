@@ -87,12 +87,16 @@
   inputs.forEach((input) => {
     input.setAttribute("autocomplete", "off");
 
+    input.addEventListener("pointerdown", () => {
+      window.setTimeout(() => renderMenu(input));
+    });
     input.addEventListener("focus", () => renderMenu(input));
+    input.addEventListener("click", () => renderMenu(input));
     input.addEventListener("input", () => renderMenu(input));
     input.addEventListener("blur", () => {
       remember(input);
       window.setTimeout(() => {
-        if (!menu.matches(":hover")) {
+        if (activeInput === input && document.activeElement !== input && !menu.matches(":hover")) {
           hideMenu();
         }
       }, 120);
@@ -114,9 +118,13 @@
       return;
     }
 
-    if (!event.target.closest("[data-history-key]")) {
-      hideMenu();
+    const historyInput = event.target.closest("[data-history-key]");
+    if (historyInput) {
+      renderMenu(historyInput);
+      return;
     }
+
+    hideMenu();
   });
 
   menu.addEventListener("mousedown", (event) => {

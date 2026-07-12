@@ -1,5 +1,17 @@
 const searchRecords = [
   {
+    title: "赫伊希尔委员会",
+    type: "未知组织",
+    href: "pages/32-heysir-committee.html",
+    keys: ["赫伊希尔委员会", "赫伊希尔"]
+  },
+  {
+    title: "赫伊希尔委员会",
+    type: "未知组织",
+    href: "pages/32-heysir-committee.html",
+    keys: ["赫伊希尔委员会", "赫伊希尔"]
+  },
+  {
     title: "请同学赶紧发送照片以便网站保存",
     type: "公告",
     href: "pages/03-photo-submit-notice.html",
@@ -36,12 +48,6 @@ const searchRecords = [
     keys: ["管理员"]
   },
   {
-    title: "管理员账户登录：信息委员",
-    type: "管理员",
-    href: "pages/07-admin-info-login.html",
-    keys: ["管理员/信息委员", "管理员账号 信息委员", "七月重大事件", "罪孽校舍"]
-  },
-  {
     title: "访问受限",
     type: "权限限制",
     href: "pages/08-absence-correction.html",
@@ -72,22 +78,28 @@ const searchRecords = [
     keys: ["本2兔", "本二兔", "ben2tu", "bilibili", "折棠6中同窗录作者"]
   },
   {
+    title: "黑箱百科：哈希函数",
+    type: "黑箱百科",
+    href: "pages/30-hash-function-intro.html",
+    keys: ["哈希", "哈希函数", "hash","哈希加密"]
+  },
+  {
     title: "突发",
     type: "娱乐新闻",
     href: "pages/25-lin-ruoxuan-news.html",
     keys: ["林若萱"]
   },
   {
-    title: "我的日记1：信息委员",
+    title: "日记1",
     type: "日记",
     href: "pages/10-info-diary-01.html",
-    keys: ["我的日记1", "信息委员日记1", "许知夏", "好的归宿"]
+    keys: ["许知夏"]
   },
   {
-    title: "我的日记2：信息委员",
+    title: "日记2",
     type: "日记",
     href: "pages/11-info-diary-02.html",
-    keys: ["我的日记2", "信息委员日记2", "同学出去"]
+    keys: ["许知夏"]
   },
   {
     title: "我的日记3：信息委员",
@@ -136,6 +148,12 @@ const searchRecords = [
     type: "仪式",
     href: "pages/18-ritual-note.html",
     keys: ["奥窟耶他仪式", "仪式详解", "符咒代码"]
+  },
+  {
+    title: "奥摩耶他降魂仪式，真的可以实现愿望",
+    type: "黑箱论坛",
+    href: "pages/31-omoyeta-ritual-thread.html",
+    keys: ["奥摩耶他降魂仪式", "奥摩耶他", "降魂仪式"]
   },
   {
     title: "管理员账号登录：班长",

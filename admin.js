@@ -9,22 +9,23 @@ const accounts = [
   {
     id: "art",
     displayName: "美术委员",
-    aliases: ["redcanvas"],
-    passwords: ["shadowpaint"],
+    aliases: ["qoisadjk"],
+    passwords: ["inks"],
+    passwordCaseSensitive: true,
     href: "pages/admin-art-dashboard.html"
   },
   {
     id: "sports",
-    displayName: "体育委员",
-    aliases: ["cleartrack"],
-    passwords: ["morningrun"],
+    displayName: "肖青",
+    aliases: ["qx17"],
+    passwords: ["m04"],
     href: "pages/admin-sports-dashboard.html"
   },
   {
     id: "info",
     displayName: "信息委员",
     aliases: ["quietarchive"],
-    passwords: ["paperdoor"],
+    passwords: ["6D3F8A91C4E72B0F9A5D13E8B6C0472AD9F01C35E8B64A7F2D0C93B18E5A4F6D"],
     href: "pages/admin-info-dashboard.html"
   }
 ];
@@ -58,6 +59,10 @@ function findAccount(username, password) {
   return accounts.find((account) => {
     const aliasMatched = account.aliases.some((alias) => normalize(alias) === normalizedUsername);
     const passwordMatched = account.passwords.some((item) => {
+      if (account.passwordCaseSensitive) {
+        return item === trimmedPassword;
+      }
+
       return item === trimmedPassword || normalize(item) === normalizedPassword;
     });
 

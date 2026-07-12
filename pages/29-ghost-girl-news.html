@@ -53,6 +53,17 @@
           <figcaption>学校官方名单部分截图。为了保护学生隐私，除林媛以外的姓名均已使用黑色长方形遮挡；班级职务栏予以保留。</figcaption>
         </figure>
 
+        <figure class="ent-photo ent-id-evidence">
+          <div class="redacted-id-card" data-eye-redaction>
+            <img class="redacted-id-base" src="../ghost-girl-id-portrait.png" alt="林媛证件照存档" draggable="false">
+            <div class="eye-redaction" data-redaction-zone aria-hidden="true">
+              <div class="eye-strip" data-eye-strip></div>
+              <div class="eye-selection" data-eye-selection></div>
+            </div>
+          </div>
+          <figcaption>照片眼部区域已经过特殊处理</figcaption>
+        </figure>
+
         <div class="ent-copy">
           <p>据网友提供的网页截图，折棠市第六中学一处班级纪念网站中，陆续出现了多张所谓“幽灵少女”的照片。照片中出现的女学生被标注为林媛，网站内还能检索到她的姓名、班级以及家长信息。</p>
           <p>然而记者联系到档案中登记的家长后，对方表示家中从未有过名叫林媛的孩子，并认为相关网页内容属于恶作剧。多名同班学生也表示，对照片中的女孩没有任何印象。</p>
@@ -77,5 +88,99 @@
       <p>娱闻直击 · 转载内容仅保留新闻页面 · 页面编码 UTF-8</p>
     </footer>
   </div>
+  <script>
+    (() => {
+      const cards = document.querySelectorAll("[data-eye-redaction]");
+
+      cards.forEach((card) => {
+        const zone = card.querySelector("[data-redaction-zone]");
+        const eyeStrip = card.querySelector("[data-eye-strip]");
+        const selection = card.querySelector("[data-eye-selection]");
+        let startX = 0;
+        let isDragging = false;
+
+        const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+        const reset = () => {
+          zone.classList.remove("has-selection", "is-dragging");
+          eyeStrip.style.clipPath = "";
+          selection.style.clipPath = "";
+        };
+
+        const applySelection = (from, to) => {
+          const rect = zone.getBoundingClientRect();
+          const left = clamp(Math.min(from, to), 0, rect.width);
+          const right = clamp(Math.max(from, to), 0, rect.width);
+          const width = right - left;
+
+          if (width < 7) {
+            reset();
+            return;
+          }
+
+          const selectionInset = `inset(0 ${rect.width - right}px 0 ${left}px)`;
+          const revealInset = `inset(0 ${left}px 0 ${rect.width - right}px)`;
+          eyeStrip.style.clipPath = revealInset;
+          selection.style.clipPath = selectionInset;
+          zone.classList.add("has-selection");
+        };
+
+        const localX = (event) => {
+          const rect = zone.getBoundingClientRect();
+          return clamp(event.clientX - rect.left, 0, rect.width);
+        };
+
+        zone.addEventListener("pointerdown", (event) => {
+          if (event.button !== 0) {
+            return;
+          }
+
+          event.preventDefault();
+          isDragging = true;
+          startX = localX(event);
+          reset();
+          zone.classList.add("is-dragging");
+          zone.setPointerCapture(event.pointerId);
+        });
+
+        zone.addEventListener("pointermove", (event) => {
+          if (!isDragging) {
+            return;
+          }
+
+          event.preventDefault();
+          applySelection(startX, localX(event));
+        });
+
+        zone.addEventListener("pointerup", (event) => {
+          if (!isDragging) {
+            return;
+          }
+
+          isDragging = false;
+          zone.classList.remove("is-dragging");
+          applySelection(startX, localX(event));
+          zone.releasePointerCapture(event.pointerId);
+        });
+
+        zone.addEventListener("pointercancel", () => {
+          isDragging = false;
+          reset();
+        });
+
+        document.addEventListener("pointerdown", (event) => {
+          if (!card.contains(event.target)) {
+            reset();
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            reset();
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

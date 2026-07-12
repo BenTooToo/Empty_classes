@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>赫伊希尔委员会</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="committee-dark-page">
+  <main class="committee-threshold">
+    <header class="committee-sigil">
+      <span>H</span>
+      <p>HEYSIR / THE UNNUMBERED ARCHIVE</p>
+    </header>
+
+    <article class="committee-old-text">
+      <p class="committee-overline">在第一份姓名被赐予第一具躯壳之前</p>
+      <h1>赫伊希尔委员会</h1>
+      <p>我们并非诞生于年代之中。年代只是后来者为了丈量遗忘而竖立的刻度，而委员会在刻度出现以前，便已坐在太阳背面的长桌旁，听取尚未成为语言之物的证词。</p>
+      <p>王朝以石头自称永恒，众神以雷霆要求被记住，海则用一次又一次涨落修改岸上的名字。委员会不与其中任何一方争辩。我们只在它们消失之后，将余下之物编目，并替那些无法返回的灵魂保管最后一项欲望。</p>
+      <p>赫伊希尔不是一个地点，也不是一群人的姓氏。它是门关闭以后仍存在的门缝，是见证者忘却之后仍未熄灭的目光。被修正的仪式、被抹去的姓名与未获准实现的愿望，最终都将经过此处。</p>
+      <blockquote>“凡以真实姓名请求进入者，应当准备承受姓名所记得的一切。”</blockquote>
+    </article>
+
+    <section class="committee-login" aria-labelledby="committeeLoginTitle">
+      <h2 id="committeeLoginTitle">内部档案验证</h2>
+      <form id="committeeLoginForm" autocomplete="off">
+        <label for="committeeRealName">真实姓名</label>
+        <input id="committeeRealName" name="realName" type="text" autocomplete="off" required>
+        <label for="committeePassword">密码</label>
+        <input id="committeePassword" name="password" type="password" autocomplete="off" required>
+        <button type="submit">请求进入</button>
+        <p id="committeeLoginMessage" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+  <div class="committee-darkness" aria-hidden="true"></div>
+  <script src="../committee-login.js"></script>
+</body>
+</html>

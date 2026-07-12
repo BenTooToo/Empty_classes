@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>赫伊希尔委员会 · 人员名录</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="committee-roster-page">
+  <div class="committee-roster-shell">
+    <header class="committee-roster-header">
+      <div class="committee-roster-mark">H</div>
+      <div><p>HEYSIR COMMITTEE / AUTHORIZED ARCHIVE</p><h1>委员会人员名录</h1></div>
+      <button id="committeeLogout" type="button">关闭档案</button>
+    </header>
+
+    <main class="committee-roster-main">
+      <p class="committee-roster-notice">访问级别：见证者　·　档案仅供核对　·　未填写字段将在后续审议中补全</p>
+      <section class="committee-person-card">
+        <figure><img src="../ben2tu-avatar.png" alt="梁致远档案照片"><figcaption>HY-07-001</figcaption></figure>
+        <div class="committee-person-data">
+          <header><div><span>真实姓名</span><h2>梁致远</h2></div><b>已归档</b></header>
+          <dl>
+            <dt>原身份</dt><dd>折棠市第六中学 · 班长</dd>
+            <dt>旧系统账号</dt><dd>admin-07</dd>
+            <dt>委员会记录</dt><dd>第七见证席 / 奥摩耶他仪式参与者</dd>
+            <dt>档案状态</dt><dd>姓名确认；灵魂记录存在冲突</dd>
+            <dt>附属权限</dt><dd>校园旧站管理、监控档案、仪式文书</dd>
+          </dl>
+        </div>
+      </section>
+
+      <section class="committee-person-card">
+        <figure><img src="../lin-ruoxuan.png" alt="林若萱档案照片"><figcaption>HY-07-002</figcaption></figure>
+        <div class="committee-person-data">
+          <header><div><span>真实姓名</span><h2>林若萱</h2></div><b>观察中</b></header>
+          <dl>
+            <dt>原身份</dt><dd>折棠市第六中学 · 美术委员</dd>
+            <dt>公开身份</dt><dd>青年画家</dd>
+            <dt>委员会记录</dt><dd>奥摩耶他符咒绘制者 / 仪式参与者</dd>
+            <dt>档案状态</dt><dd>生命体征残留；意识记录未回收</dd>
+            <dt>关联资料</dt><dd>符咒原稿、画室记录、入院档案</dd>
+          </dl>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script>
+    if (sessionStorage.getItem('heysirAuthorized') !== 'true') location.replace('32-heysir-committee.html');
+    document.querySelector('#committeeLogout').addEventListener('click', () => {
+      sessionStorage.removeItem('heysirAuthorized');
+      location.replace('32-heysir-committee.html');
+    });
+  </script>
+</body>
+</html>

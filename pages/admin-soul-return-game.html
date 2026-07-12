@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>绾㈢溂妗ｆ锛氭湭鐭ュ悕鍗�</title>
+  <link rel="icon" type="image/svg+xml" href="../pics/red-eye-favicon.svg">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="soul-game-page">
+  <div class="soul-game" id="soulGame">
+    <main class="soul-3d-stage" id="soul3dStage" aria-label="可操控的像素风三维名人堂地牢">
+      <canvas id="soulDungeonCanvas" width="320" height="180" tabindex="0">你的浏览器不支持地牢画面。</canvas>
+      <div class="soul-crosshair" aria-hidden="true">+</div>
+      <div class="soul-mouse-guide" id="soulMouseGuide" aria-hidden="true">
+        <span class="soul-mouse-icon"><i></i></span>
+      </div>
+      <div class="soul-mirror-note" id="soulMirrorNote" hidden>
+        <strong>肖青</strong>
+        <span>账号　qx17</span>
+        <span>密码　m04</span>
+      </div>
+      <aside class="soul-nearby-record" id="soulNearbyRecord" hidden>
+        <strong id="soulNearbyName"></strong>
+        <span id="soulNearbyRole"></span>
+        <b id="soulNearbyStatus"></b>
+      </aside>
+    </main>
+  </div>
+  <script src="../soul-game.js"></script>
+</body>
+</html>
