@@ -6,6 +6,7 @@ const resultStep = document.querySelector("#queryResultStep");
 const loadingBar = document.querySelector("#surveillanceLoadingBar");
 const loadingNumber = document.querySelector("#surveillanceLoadingNumber");
 const closeQueryModal = document.querySelector("#closeQueryModal");
+const officeSurveillanceVideo = document.querySelector("#officeSurveillanceVideo");
 const confirmButtons = document.querySelectorAll("[data-query-confirm]");
 const installationInvite = document.querySelector("#installationInvite");
 const closeInstallationInvite = document.querySelector("#closeInstallationInvite");
@@ -46,6 +47,8 @@ function loadSurveillance() {
       window.setTimeout(() => {
         loadingStep.hidden = true;
         resultStep.hidden = false;
+        officeSurveillanceVideo.currentTime = 0;
+        officeSurveillanceVideo.play().catch(() => {});
         closeQueryModal.focus();
         installationInviteTimer = window.setTimeout(() => {
           installationInvite.classList.add("is-visible");
@@ -72,6 +75,8 @@ addressQuery.addEventListener("submit", (event) => {
 confirmButtons.forEach((button) => button.addEventListener("click", loadSurveillance));
 
 closeQueryModal.addEventListener("click", () => {
+  officeSurveillanceVideo.pause();
+  officeSurveillanceVideo.currentTime = 0;
   queryModal.classList.remove("is-open");
   queryModal.setAttribute("aria-hidden", "true");
 });

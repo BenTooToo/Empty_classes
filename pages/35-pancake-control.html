@@ -17,8 +17,8 @@
     <section class="hero-box">
       <div class="hero-copy">
         <p class="fake-award">★ 初创企业 · 永久老字号 ★</p>
-        <h1>让每一张煎饼<br>得到它应当控制</h1>
-        <p>本公司是从事煎饼制造、煎饼思想整理和圆形食品风险消除的现代化公司。我们交付温度，也回收原因。</p>
+        <h1>让每一张煎饼<br>都值得被控制</h1>
+        <p>本公司是从事煎饼制造、煎饼监控和煎饼风险消除的现代化公司。现在和本公司订货更能够提供额外果酱服务！。</p>
         <button type="button" onclick="alert('查询失败：煎饼目前不在这个世界。')">立即购买煎饼</button>
       </div>
       <figure class="image-slot hero-image">
@@ -26,19 +26,19 @@
       </figure>
     </section>
 
-    <div class="ticker"><b>重要：</b>由于业障波动，今日所有煎饼均按昨日明天价格结算。客服不会回答关于“味道”的询问。</div>
+    <div class="ticker"><b>重要：</b>受黄油价格影响，今日所有煎饼均按明天价格结算。</div>
 
     <section id="about" class="content-panel yellow-panel">
       <h2>一、关于我们 ABOUT PANCAKE US</h2>
       <div class="two-columns">
         <div>
-          <p>煎饼控制系统有限公司成立于一个适合成立的日期。注册资本很多，实际资本请不要触摸。公司坚持“把煎饼做成煎饼以前”的经营思想，为家庭、工厂、走廊及不确定客户提供高兴服务。</p>
-          <p>我们拥有先进的煎饼控制设备，设备暂时没有通电。通过对面粉的友好劝说，公司已经形成研发、生产、运输、遗忘的一条龙体系。</p>
+          <p>煎饼控制系统有限公司成立于一个适合成立的日期。注册资本很多。公司坚持“把煎饼做成煎包”的经营思想，为家庭、工厂、监狱提供服务。</p>
+          <p>我们拥有先进的煎饼控制设备，设备暂时没有通电。但通过对面粉的友好劝说，公司已经形成研发、生产、运输、安装、下载、回收的一条龙体系。</p>
           <table>
-            <tr><th>产品</th><th>规格</th><th>存在状态</th></tr>
-            <tr><td>标准煎饼</td><td>一个圆</td><td>等待确认</td></tr>
-            <tr><td>企业煎饼</td><td>比较圆</td><td>已经听说</td></tr>
-            <tr><td>控制煎饼</td><td>不要测量</td><td class="red-text">不在此世界</td></tr>
+            <tr><th>产品</th><th>规格</th><th>价格</th></tr>
+            <tr><td>标准煎饼</td><td>一个圆</td><td>2块5</td></tr>
+            <tr><td>企业煎饼</td><td>比较圆</td><td>3块5</td></tr>
+            <tr><td>控制煎饼</td><td>六边形</td><td class="red-text">免费</td></tr>
           </table>
         </div>
         <figure class="image-slot">
@@ -81,8 +81,7 @@
       </div>
       <div class="jobs">
         <div><b>煎饼观察员</b><span>要求：能看见圆形</span><button onclick="alert('该岗位已经被煎饼录用。')">投递</button></div>
-        <div><b>业障收银员</b><span>要求：不询问货币</span><button onclick="alert('简历已发送至错误部门。')">投递</button></div>
-        <div><b>夜班不存在员</b><span>要求：独立于其他机构</span><button onclick="alert('你已于昨天入职。')">投递</button></div>
+        <div><b>业障收银员</b><span>要求：不询问货币</span><button onclick="alert('该岗位已经被煎饼录用。')">投递</button></div>
       </div>
     </section>
   </main>
@@ -110,8 +109,10 @@
       <div id="queryResultStep" hidden>
         <h2>实时监控录像</h2>
         <figure class="surveillance-placeholder">
-          <span>监控画面预留位置<br><small>pics/pancake-surveillance.jpg</small></span>
-          <img src="../pics/pancake-surveillance.jpg" alt="苍松7路78号实时监控画面" onerror="this.style.display='none'">
+          <video id="officeSurveillanceVideo" controls autoplay loop playsinline preload="auto" aria-label="苍松7路78号实时监控录像">
+            <source src="../vids/office_final.mp4" type="video/mp4">
+            你的浏览器不支持视频播放。
+          </video>
         </figure>
         <button type="button" id="closeQueryModal">关闭窗口</button>
       </div>

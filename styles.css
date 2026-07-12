@@ -2788,6 +2788,130 @@ body.photo-lightbox-open {
 
 .art-villain-diary strong { color: #8f1525; }
 
+/* 终局文字选择：纯黑舞台、微软雅黑白字与克制的电影式动效。 */
+.ending-choice-page {
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+  font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+  transition: background 1.65s ease, color 1.3s ease;
+}
+
+.ending-choice-page.ending-fade-white { background: #fff; color: #fff; }
+
+.ending-choice-stage {
+  display: flex;
+  min-height: 100vh;
+  padding: 9vh max(24px, 8vw);
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ending-choice-text {
+  width: min(860px, 100%);
+  min-height: 3em;
+  margin: 0;
+  color: #fff;
+  font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+  font-size: clamp(19px, 2vw, 25px);
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  line-height: 2;
+  text-align: center;
+  white-space: pre-wrap;
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.12);
+  animation: endingTextReveal 420ms ease both;
+}
+
+.ending-choice-options {
+  width: min(580px, 100%);
+  max-height: 58vh;
+  margin-top: 38px;
+  padding: 4px 8px;
+  overflow-y: auto;
+  scrollbar-color: #555 #000;
+  animation: endingOptionsReveal 380ms ease both;
+}
+
+.ending-choice-options[hidden] { display: none; }
+
+.ending-choice-options button {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 52px;
+  margin: 0 0 12px;
+  padding: 12px 22px;
+  border: 1px solid #555;
+  background: #000;
+  color: #fff;
+  font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  line-height: 1.6;
+  cursor: pointer;
+  transition: border-color 180ms ease, background 180ms ease, letter-spacing 180ms ease, transform 180ms ease;
+}
+
+.ending-choice-options button::before {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  width: 0;
+  height: 1px;
+  background: #fff;
+  content: "";
+  transition: width 180ms ease;
+}
+
+.ending-choice-options button:hover,
+.ending-choice-options button:focus-visible {
+  border-color: #fff;
+  background: #090909;
+  letter-spacing: 0.16em;
+  outline: none;
+  transform: translateX(3px);
+}
+
+.ending-choice-options button:hover::before,
+.ending-choice-options button:focus-visible::before { width: 18px; }
+.ending-choice-options .choice-back { color: #bdbdbd; border-color: #393939; border-style: dashed; }
+
+.ending-choice-hint {
+  position: fixed;
+  bottom: 26px;
+  margin: 0;
+  color: #fff;
+  font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  opacity: 0.42;
+  animation: endingHintPulse 2.4s ease-in-out infinite;
+}
+
+.ending-choice-hint[hidden] { display: none; }
+.ending-forum-page .ending-linyuan-post { border-color: #5c8f73; }
+.ending-forum-page .ending-author-post { margin-top: 24px; border-color: #6c5790; }
+.ending-forum-page .ending-author-post .post-user { background: #eee9f6; }
+.desire-ending-page .memoir-sheet strong { color: #861e2d; }
+
+@keyframes endingTextReveal { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes endingOptionsReveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes endingHintPulse { 0%,100% { opacity: 0.3; } 50% { opacity: 0.62; } }
+
+@media (max-width: 600px) {
+  .ending-choice-stage { padding: 8vh 18px; }
+  .ending-choice-text { font-size: 18px; letter-spacing: 0.09em; }
+  .ending-choice-options { max-height: 62vh; margin-top: 24px; }
+  .ending-choice-options button { min-height: 48px; font-size: 14px; }
+}
+
 .role-file-signature {
   color: #657386;
   text-align: right;
