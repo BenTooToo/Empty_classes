@@ -1,4 +1,19 @@
 /* 背景使用 pics/pan3.png。 */
+.page-index-note-fixed {
+  position: fixed;
+  right: 12px;
+  bottom: 9px;
+  z-index: 10000;
+  min-width: 42px;
+  padding: 3px 7px;
+  border: 1px solid #46779f;
+  background: rgba(238, 247, 255, 0.94);
+  color: #204d72;
+  font: 11px/1.4 "Courier New", SimSun, monospace;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+}
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {

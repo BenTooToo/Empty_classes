@@ -1,13 +1,14 @@
 const searchRecords = [
   {
-    title: "赫伊希尔委员会",
-    type: "未知组织",
-    href: "pages/32-heysir-committee.html",
-    keys: ["赫伊希尔委员会", "赫伊希尔"]
+    title: "黑箱同城论坛",
+    type: "黑箱百科",
+    href: "pages/38-heixiang-forum-intro.html",
+    keys: ["黑箱", "黑箱同城", "黑箱同城论坛"],
+    text: "全球最知名的论坛网站，以都市传说、奇闻轶事闻名，不少故事至今仍有网友讨论。"
   },
   {
-    title: "赫伊希尔委员会",
-    type: "未知组织",
+    title: "委员会",
+    type: "未知",
     href: "pages/32-heysir-committee.html",
     keys: ["赫伊希尔委员会", "赫伊希尔"]
   },
@@ -48,9 +49,8 @@ const searchRecords = [
     keys: ["管理员"]
   },
   {
-    title: "访问受限",
-    type: "权限限制",
-    href: "pages/08-absence-correction.html",
+    title: "错误",
+    href: "pages/admin-file-view.html?role=monitor&file=absence-correction",
     keys: ["缺席", "缺席名单"]
   },
   {
@@ -60,32 +60,32 @@ const searchRecords = [
     keys: ["学生名单", "信息委员", "美术委员","班长"]
   },
   {
-    title: "聊天截图",
+    title: "截图",
     type: "照片",
     href: "pages/28-zhang-yuhang-call-record.html",
     keys: ["张宇航"]
   },
   {
-    title: "黑箱百科：林若萱",
+    title: "林若萱",
     type: "黑箱百科",
     href: "pages/24-lin-ruoxuan-profile.html",
     keys: ["林若萱"]
   },
   {
-    title: "黑箱百科：本2兔",
+    title: "本2兔",
     type: "黑箱百科",
     href: "pages/27-ben2tu-profile.html",
     keys: ["本2兔", "本二兔", "ben2tu", "bilibili", "折棠6中同窗录作者"]
   },
   {
-    title: "黑箱百科：哈希函数",
+    title: "哈希函数",
     type: "黑箱百科",
     href: "pages/30-hash-function-intro.html",
-    keys: ["哈希", "哈希函数", "hash","哈希加密"]
+    keys: ["哈希", "哈希函数", "hash","哈希加密","哈希值"]
   },
   {
     title: "煎饼控制系统有限公司官方网站",
-    type: "企业官网",
+    type: "官网",
     href: "pages/35-pancake-control.html",
     keys: ["煎饼", "煎饼控制系统", "煎饼控制有限公司", "煎饼控制系统有限公司"]
   },
@@ -96,95 +96,38 @@ const searchRecords = [
     keys: ["林若萱"]
   },
   {
-    title: "日记1",
+    title: "班长和我的密码",
     type: "日记",
-    href: "pages/10-info-diary-01.html",
+    href: "pages/admin-file-view.html?role=info&file=info-diary-01",
     keys: ["许知夏"]
   },
   {
     title: "日记2",
     type: "日记",
-    href: "pages/11-info-diary-02.html",
-    keys: ["许知夏"]
+    href: "pages/admin-file-view.html?role=info&file=info-diary-02",
+    keys: []
   },
   {
     title: "我的日记3：信息委员",
     type: "日记",
-    href: "pages/12-info-diary-03.html",
+    href: "pages/admin-file-view.html?role=info&file=info-diary-03",
     keys: ["我的日记3", "小青", "目击者", "换了名字"]
   },
-  {
-    title: "返魂录",
-    type: "隐藏索引",
-    href: "pages/13-soul-return-log.html",
-    keys: ["返魂录", "暗网返魂录", "招魂成功", "自己"]
-  },
-  {
-    title: "新闻报道：女高三生失踪",
-    type: "新闻报道",
-    href: "pages/14-news-missing-girl.html",
-    keys: ["新闻报道", "女高三生", "媛媛失踪", "某区十大悬案"]
-  },
+
   {
     title: "悬案：学校网站惊现幽灵少女",
     type: "娱乐新闻",
     href: "pages/29-ghost-girl-news.html",
     keys: ["幽灵少女", "悬案"]
   },
-  {
-    title: "新闻报道：学生离奇自杀",
-    type: "新闻报道",
-    href: "pages/15-news-monitor-suicide.html",
-    keys: ["新冠疫情", "学生离奇自杀", "班长真名", "班长疯了"]
-  },
-  {
-    title: "医院报告单",
-    type: "报告",
-    href: "pages/16-hospital-report.html",
-    keys: ["医院报告单", "玩家真名", "失忆症状", "药物治疗"]
-  },
-  {
-    title: "熟悉的字迹",
-    type: "草稿",
-    href: "pages/17-familiar-handwriting.html",
-    keys: ["熟悉的字迹", "坦白真相", "21"]
-  },
-  {
-    title: "奥窟耶他仪式",
-    type: "仪式",
-    href: "pages/18-ritual-note.html",
-    keys: ["奥窟耶他仪式", "仪式详解", "符咒代码"]
-  },
+ 
   {
     title: "奥摩耶他降魂仪式，真的可以实现愿望",
     type: "黑箱论坛",
     href: "pages/31-omoyeta-ritual-thread.html",
     keys: ["奥摩耶他降魂仪式", "奥摩耶他", "降魂仪式"]
   },
-  {
-    title: "管理员账号登录：班长",
-    type: "管理员",
-    href: "pages/19-admin-monitor-account.html",
-    keys: ["管理员账号 班长", "班长账号", "admin-07", "大毛", "愿奥窟耶他保佑我"]
-  },
-  {
-    title: "班长日记",
-    type: "日记",
-    href: "pages/20-monitor-diary.html",
-    keys: ["班长日记", "聊天记录", "仪式是真的"]
-  },
-  {
-    title: "恢复登录",
-    type: "最终页面",
-    href: "pages/22-recovery-login.html",
-    keys: ["恢复登录", "真相", "仪式选择", "使用自己的愿望"]
-  },
-  {
-    title: "真结局",
-    type: "结局",
-    href: "pages/23-true-ending.html",
-    keys: ["真结局", "结局", "林媛归来", "班长失踪"]
-  }
+  
 ];
 
 const form = document.querySelector("#siteSearch");

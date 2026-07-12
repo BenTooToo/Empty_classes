@@ -280,7 +280,7 @@ const fileRecords = {
     `
   },
   "sports-familiar-self": {
-    title: "熟悉的自己",
+    title: "熟悉的字迹",
     html: `
       <article class="role-diary-paper">
         <p>我和林媛是被班长邀请去参加那场仪式的。班长威胁我，说除非我把林媛带过来，否则就要献祭我。我没有想到仪式竟然是真的，更没有想到林媛真的会消失。</p>

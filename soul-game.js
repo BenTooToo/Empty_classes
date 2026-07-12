@@ -11,6 +11,8 @@ const nearbyRole = document.querySelector('#soulNearbyRole');
 const nearbyStatus = document.querySelector('#soulNearbyStatus');
 const mouseGuide = document.querySelector('#soulMouseGuide');
 const mirrorNote = document.querySelector('#soulMirrorNote');
+const jumpscare = document.querySelector('#soulJumpscare');
+const jumpscareWhiteout = document.querySelector('#soulJumpscareWhiteout');
 const WIDTH = canvas.width;
 const HEIGHT = canvas.height;
 const FOV = Math.PI / 3;
@@ -61,6 +63,9 @@ let nearbyPortrait = null;
 let puzzleLocked = false;
 let solvedAt = 0;
 let viewActivated = false;
+let mirrorVisibleSince = 0;
+let jumpscareStarted = false;
+let jumpscareActive = false;
 
 portraits.forEach((portrait) => {
   portrait.asset = new Image();
@@ -306,12 +311,44 @@ function renderRoom() {
 function updatePuzzleOverlays() {
   if (!solvedAt) {
     mirrorNote.hidden = true;
+    mirrorVisibleSince = 0;
+    return;
+  }
+  if (jumpscareActive) {
+    mirrorNote.hidden = true;
     return;
   }
   const facingMirror = Math.abs(normalizeAngle(camera.angle - Math.PI / 2)) < .48;
   const insideHall = camera.y < 11;
   const closeToNote = camera.y > 8.8 && camera.y < 10.75 && Math.abs(camera.x-7) < 1.7;
-  mirrorNote.hidden = !(facingMirror && insideHall && closeToNote);
+  const mirrorIsVisible = facingMirror && insideHall && closeToNote;
+  mirrorNote.hidden = !mirrorIsVisible;
+
+  if (!mirrorIsVisible) {
+    mirrorVisibleSince = 0;
+    return;
+  }
+
+  if (!mirrorVisibleSince) mirrorVisibleSince = performance.now();
+  if (performance.now() - mirrorVisibleSince >= 220) startMirrorJumpscare();
+}
+
+function startMirrorJumpscare() {
+  if (jumpscareStarted) return;
+  jumpscareStarted = true;
+  jumpscareActive = true;
+  mirrorNote.hidden = true;
+  nearbyRecord.hidden = true;
+  jumpscare.hidden = false;
+  jumpscare.classList.add('is-rushing');
+
+  window.setTimeout(() => jumpscareWhiteout.classList.add('is-visible'), 720);
+  window.setTimeout(() => {
+    jumpscare.hidden = true;
+    jumpscare.classList.remove('is-rushing');
+    jumpscareActive = false;
+  }, 970);
+  window.setTimeout(() => jumpscareWhiteout.classList.remove('is-visible'), 1320);
 }
 
 function updateNearby(visible) {

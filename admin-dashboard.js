@@ -11,7 +11,10 @@ loadingOverlay.innerHTML = `
     <p id="roleFileLoadingText">正在读取文件...</p>
   </div>
   <form class="role-file-interrupt-dialog" id="roleFileInterruptDialog" autocomplete="off" hidden>
-    <strong>读取故障</strong>
+    <div class="role-file-interrupt-header">
+      <strong>读取故障</strong>
+      <button class="role-file-interrupt-close" id="roleFileInterruptClose" type="button" aria-label="退出读取故障">退出</button>
+    </div>
     <p>该网站已经被<span class="encrypted-redaction" aria-label="加密内容">██████</span>加密，请输入密匙进入。</p>
     <label for="roleFileSecret">密匙</label>
     <input id="roleFileSecret" type="password" autocomplete="off" required>
@@ -37,11 +40,22 @@ document.body.appendChild(logoutOverlay);
 const loadingRing = document.querySelector("#roleFileLoadingRing");
 const loadingText = document.querySelector("#roleFileLoadingText");
 const interruptDialog = document.querySelector("#roleFileInterruptDialog");
+const interruptClose = document.querySelector("#roleFileInterruptClose");
 const secretInput = document.querySelector("#roleFileSecret");
 const secretMessage = document.querySelector("#roleFileSecretMessage");
 const logoutLoadingBar = document.querySelector("#roleLogoutLoadingBar");
 let loadingStarted = false;
 let logoutStarted = false;
+
+interruptClose.addEventListener("click", () => {
+  interruptDialog.hidden = true;
+  loadingOverlay.hidden = true;
+  loadingStarted = false;
+  secretInput.value = "";
+  secretMessage.textContent = "";
+  loadingText.textContent = "正在读取文件...";
+  loadingRing.style.setProperty("--file-progress", "0deg");
+});
 
 fileLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
