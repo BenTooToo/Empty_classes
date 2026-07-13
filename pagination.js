@@ -1,5 +1,5 @@
 (() => {
-  const totalMainPages = 34;
+  const totalMainPages = 33;
   const totalExtraPages = 6;
   const mainPages = {
     "school.html": 1,
@@ -22,10 +22,10 @@
     "admin-sports-dashboard.html": 22,
     "34-author-note.html": 26,
     "admin-info-dashboard.html": 27,
-    "admin-surveillance-console.html": 31,
-    "23-true-ending.html": 32,
-    "36-ending-good.html": 33,
-    "37-ending-desire.html": 34
+    "admin-surveillance-console.html": 30,
+    "23-true-ending.html": 31,
+    "36-ending-good.html": 32,
+    "37-ending-desire.html": 33
   };
 
   const dynamicMainPages = {
