@@ -7,6 +7,7 @@
     "04-stop-maintenance-notice.html": 3,
     "05-class-album.html": 4,
     "09-student-roster.html": 5,
+    "10-info-diary-01.html": 28,
     "28-zhang-yuhang-call-record.html": 7,
     "24-lin-ruoxuan-profile.html": 8,
     "25-lin-ruoxuan-news.html": 9,
@@ -36,9 +37,7 @@
     "sports:hospital-report": 23,
     "sports:sports-info-removal": 24,
     "sports:sports-familiar-self": 25,
-    "info:info-diary-01": 28,
-    "info:info-diary-02": 29,
-    "info:info-diary-03": 30
+    "info:info-diary-02": 29
   };
 
   const extraPages = {

@@ -99,22 +99,9 @@ const searchRecords = [
   {
     title: "班长和我的密码",
     type: "日记",
-    href: "pages/admin-file-view.html?role=info&file=info-diary-01",
+    href: "pages/10-info-diary-01.html",
     keys: ["许知夏"]
   },
-  {
-    title: "日记2",
-    type: "日记",
-    href: "pages/admin-file-view.html?role=info&file=info-diary-02",
-    keys: []
-  },
-  {
-    title: "我的日记3：信息委员",
-    type: "日记",
-    href: "pages/admin-file-view.html?role=info&file=info-diary-03",
-    keys: ["我的日记3", "小青", "目击者", "换了名字"]
-  },
-
   {
     title: "悬案：学校网站惊现幽灵少女",
     type: "娱乐新闻",
