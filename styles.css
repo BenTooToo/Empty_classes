@@ -1186,6 +1186,7 @@ body.photo-lightbox-open {
 .restricted-page {
   display: grid;
   min-height: 100vh;
+  margin: 0;
   place-items: center;
   background: #050505;
   color: #9b9b9b;
@@ -1197,6 +1198,8 @@ body.photo-lightbox-open {
   border: 1px solid #1f1f1f;
   background: #0b0b0b;
   font-size: 13px;
+  font-weight: 400;
+  text-align: center;
 }
 
 .album-wall {

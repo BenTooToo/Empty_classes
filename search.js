@@ -50,7 +50,8 @@ const searchRecords = [
   },
   {
     title: "错误",
-    href: "pages/admin-file-view.html?role=monitor&file=absence-correction",
+    type: "权限错误",
+    href: "pages/08-absence-correction.html",
     keys: ["缺席", "缺席名单"]
   },
   {
@@ -118,7 +119,7 @@ const searchRecords = [
     title: "悬案：学校网站惊现幽灵少女",
     type: "娱乐新闻",
     href: "pages/29-ghost-girl-news.html",
-    keys: ["幽灵少女", "悬案"]
+    keys: ["幽灵","幽灵少女", "悬案"]
   },
  
   {
