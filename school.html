@@ -43,10 +43,6 @@
             <dd>2016-07-09</dd>
             <dt>维护状态</dt>
             <dd>停止维护</dd>
-            <dt>镜像时间</dt>
-            <dd>2024-04-17</dd>
-            <dt>访问权限</dt>
-            <dd>访客只读</dd>
           </dl>
         </section>
 
@@ -100,9 +96,9 @@
           <h2>发表留言</h2>
           <div class="guestbook-compose-body">
             <label for="guestbookName">昵称</label>
-            <input id="guestbookName" name="guestbookName" type="text" value="匿名" autocomplete="off">
+            <input id="guestbookName" name="guestbookName" type="text" value="匿名" maxlength="20" autocomplete="off">
             <label for="guestbookMessage">留言</label>
-            <textarea id="guestbookMessage" name="guestbookMessage" rows="5" autocomplete="off"></textarea>
+            <textarea id="guestbookMessage" name="guestbookMessage" rows="5" maxlength="500" autocomplete="off"></textarea>
             <button type="button" id="guestbookSubmit">发表</button>
           </div>
         </form>
@@ -176,7 +172,7 @@
 
   <div class="guestbook-toast" id="guestbookToast" role="status" aria-live="polite">
     <div class="guestbook-toast-title">系统提示</div>
-    <p>留言功能已关闭。</p>
+    <p></p>
   </div>
 
   <script src="search.js"></script>

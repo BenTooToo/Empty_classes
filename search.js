@@ -7,10 +7,10 @@ const searchRecords = [
     text: "全球最知名的论坛网站，以都市传说、奇闻轶事闻名，不少故事至今仍有网友讨论。"
   },
   {
-    title: "委员会",
-    type: "未知",
+    title: "赫伊希尔委员会",
+    type: "Extra",
     href: "pages/32-heysir-committee.html",
-    keys: ["赫伊希尔委员会", "赫伊希尔"]
+    keys: ["赫伊希尔委员会", "赫伊希尔", "托尔法典"]
   },
   {
     title: "请同学赶紧发送照片以便网站保存",
@@ -202,29 +202,118 @@ document.addEventListener("keydown", (event) => {
 const guestbookSubmit = document.querySelector("#guestbookSubmit");
 const guestbookForm = document.querySelector("#guestbookCompose");
 const guestbookToast = document.querySelector("#guestbookToast");
+const guestbookToastMessage = guestbookToast?.querySelector("p");
+const guestbookName = document.querySelector("#guestbookName");
+const guestbookMessage = document.querySelector("#guestbookMessage");
+const guestbookMessageList = document.querySelector("#guestbook .message-list");
+const guestbookStorageKey = "zhetang6_guestbook_guest2094_v1";
 let guestbookToastTimer;
+let cachedGuestbookEntry = readCachedGuestbookEntry();
 
-function showGuestbookClosedToast() {
-  if (!guestbookToast) {
+function showGuestbookToast(message) {
+  if (!guestbookToast || !guestbookToastMessage) {
     return;
   }
 
   window.clearTimeout(guestbookToastTimer);
+  guestbookToastMessage.textContent = message;
   guestbookToast.classList.add("is-visible");
 
   guestbookToastTimer = window.setTimeout(() => {
     guestbookToast.classList.remove("is-visible");
-  }, 1800);
+  }, 2800);
+}
+
+function readCachedGuestbookEntry() {
+  try {
+    const entry = JSON.parse(window.localStorage.getItem(guestbookStorageKey));
+    if (!entry || typeof entry.message !== "string" || !entry.message.trim()) {
+      return null;
+    }
+    return entry;
+  } catch {
+    return null;
+  }
+}
+
+function formatGuestbookTime(timestamp) {
+  const date = new Date(timestamp);
+  const safeDate = Number.isNaN(date.getTime()) ? new Date() : date;
+  const pad = (value) => String(value).padStart(2, "0");
+  return `${safeDate.getFullYear()}-${pad(safeDate.getMonth() + 1)}-${pad(safeDate.getDate())} ${pad(safeDate.getHours())}:${pad(safeDate.getMinutes())}`;
+}
+
+function renderGuestbookEntry(entry) {
+  if (!guestbookMessageList || guestbookMessageList.querySelector("[data-player-guestbook-entry]")) {
+    return;
+  }
+
+  const article = document.createElement("article");
+  const head = document.createElement("div");
+  const author = document.createElement("strong");
+  const guestId = document.createElement("span");
+  const time = document.createElement("time");
+  const message = document.createElement("p");
+
+  article.className = "message";
+  article.dataset.playerGuestbookEntry = "true";
+  head.className = "message-head";
+  author.className = "message-author";
+  guestId.className = "message-id";
+
+  author.textContent = String(entry.nickname || "匿名").trim() || "匿名";
+  guestId.textContent = "guest2094";
+  time.textContent = formatGuestbookTime(entry.createdAt);
+  time.dateTime = entry.createdAt;
+  message.textContent = entry.message;
+
+  head.append(author, guestId, time);
+  article.append(head, message);
+  guestbookMessageList.appendChild(article);
+}
+
+function publishGuestbookEntry() {
+  if (cachedGuestbookEntry) {
+    showGuestbookToast("你已经发表一次观点了，请给其他同学留点位置奥");
+    return;
+  }
+
+  const message = guestbookMessage?.value.trim() || "";
+  if (!message) {
+    showGuestbookToast("请输入留言内容。");
+    guestbookMessage?.focus();
+    return;
+  }
+
+  cachedGuestbookEntry = {
+    nickname: guestbookName?.value.trim() || "匿名",
+    message,
+    createdAt: new Date().toISOString()
+  };
+
+  try {
+    window.localStorage.setItem(guestbookStorageKey, JSON.stringify(cachedGuestbookEntry));
+  } catch {
+    // 即使浏览器禁用了本地存储，本次会话仍保持只能发表一次。
+  }
+
+  renderGuestbookEntry(cachedGuestbookEntry);
+  if (guestbookMessage) guestbookMessage.value = "";
+  showGuestbookToast("留言发表成功。");
+}
+
+if (cachedGuestbookEntry) {
+  renderGuestbookEntry(cachedGuestbookEntry);
 }
 
 if (guestbookSubmit) {
-  guestbookSubmit.addEventListener("click", showGuestbookClosedToast);
+  guestbookSubmit.addEventListener("click", publishGuestbookEntry);
 }
 
 if (guestbookForm) {
   guestbookForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    showGuestbookClosedToast();
+    publishGuestbookEntry();
   });
 }
 

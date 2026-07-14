@@ -9,7 +9,7 @@ const dashboardRoles = {
     title: "美术委员后台",
     theme: "dark",
     dashboard: "admin-art-dashboard.html",
-    files: ["art-diary", "soul-return-ritual"]
+    files: ["art-diary", "shadow-exchange-ritual", "soul-return-ritual"]
   },
   sports: {
     title: "体育委员后台",
@@ -35,9 +35,10 @@ const fileRecords = {
         <p>许知夏还在那里装的跟真事儿似的，要是把她一块儿献祭了就好了。她的那点小心思我还不知道，她那个哈希加密程序从创建账号的时候就留在后台里了。只要她有小动作，我就让高远把她宰喽</p>
         <p class="diary-red-fragment">但是林媛是谁</p>
         <div class="diary-copy-cipher">
-          <p class="diary-red-fragment diary-cipher-noise">林媛是谁林媛是谁林媛是谁<span class="cipher-scrap scrap-flower">窗下的花朵</span>林媛是谁林媛是谁林媛是谁林媛是谁<span class="cipher-scrap scrap-have">有</span>林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁</p>
-          <p class="diary-red-fragment diary-cipher-noise">林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁<span class="cipher-scrap scrap-star">教室里的星星</span>林媛是谁林媛是谁林媛是谁<span class="cipher-scrap scrap-how">几</span>林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁</p>
-          <p class="diary-red-fragment diary-cipher-noise">林媛是谁<span class="cipher-scrap scrap-life">逝去的生命</span>林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁<span class="cipher-scrap scrap-tyrant">冷血的暴君</span>林媛是谁林媛是谁<span class="cipher-scrap scrap-many">个</span>林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁</p>
+          <p class="diary-red-fragment diary-cipher-noise">林媛是谁林媛是谁林媛是谁<span class="cipher-scrap scrap-flower">窗下的花朵</span>林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁</p>
+          <p class="diary-red-fragment diary-cipher-noise">林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁<span class="cipher-scrap scrap-star">教室里的星星</span>林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁</p>
+          <p class="diary-red-fragment diary-cipher-noise">林媛是谁<span class="cipher-scrap scrap-life">逝去的生命</span>林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁<span class="cipher-scrap scrap-tyrant">冷血的暴君</span>林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁林媛是谁</p>
+          <span class="cipher-count-clue" aria-label="有几个"><span class="cipher-count-have">有</span><span class="cipher-count-how">几</span><span class="cipher-count-many">个</span></span>
         </div>
       </article>
     `

@@ -6,7 +6,14 @@
   <title>黑箱同城 - 盘点那些bug特别多的网站</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="forum-page">
+<body class="forum-page opening-active">
+  <div class="opening-intro" id="openingIntro" role="dialog" aria-modal="true" aria-label="游戏开场介绍">
+    <main class="ending-choice-stage" aria-live="polite">
+      <p class="ending-choice-text" id="openingIntroText"></p>
+      <div class="ending-choice-options" id="openingIntroOptions" hidden></div>
+      <p class="ending-choice-hint" id="openingIntroHint">点击鼠标左键继续</p>
+    </main>
+  </div>
   <div class="forum-shell">
     <header class="forum-header">
       <div class="forum-brand">
@@ -33,17 +40,6 @@
           </dl>
         </section>
 
-        <section class="forum-box" id="rules">
-          <h2>浏览须知</h2>
-          <ol class="forum-rules">
-            <li>记住，你是肖云，你是一名23岁的在读大学生。</li>
-            <li>这里是论坛入口页，不会直接进入游戏流程。</li>
-            <li>旧站的站内搜索是主要异常来源，关键词会暴露不该出现的记录。</li>
-            <li>本论坛强烈推荐在电脑上使用，由于技术问题移动端目前并不适配。</li>
-            <li>本游戏不由任何真实故事启发，如有雷同，纯属巧合。</li>
-            <li>游戏部分网页存在剧烈颜色改变，光敏症患者请谨慎游玩。</li>
-          </ol>
-        </section>
       </aside>
 
       <section class="thread-column" id="thread">
@@ -98,13 +94,24 @@
           </div>
           <div class="post-body">
             <time data-day="yesterday" data-clock="23:13">2026-05-25 23:13</time>
-            <p>这类站进去看看就行，别在搜索框以外乱点。看起来像纪念站，结果很多页面权限标识都是空的。</p>
+            <p>卧槽这个网站我知道，前几年不是爆出来有好几个死亡事故都是这个班的同学么，这种网站我是真的不敢看啊</p>
           </div>
         </article>
 
-        <article class="forum-post" data-forum-floor="5">
+        <article class="forum-post">
           <div class="post-user">
             <strong>5楼</strong>
+            <span>路过吃瓜</span>
+          </div>
+          <div class="post-body">
+            <time data-day="yesterday" data-clock="23:19">2026-05-25 23:19</time>
+            <p>坏了坏了，本来想找个乐子，结果找的真的闹鬼网站了</p>
+          </div>
+        </article>
+
+        <article class="forum-post" data-forum-floor="6">
+          <div class="post-user">
+            <strong>6楼</strong>
             <span>404今天也在</span>
           </div>
           <div class="post-body">
@@ -149,7 +156,7 @@
       };
       const minutesSinceMidnight = now.getHours() * 60 + now.getMinutes();
       const warningMessage = "据统计不睡觉玩恐怖游戏会导致猝死，本2兔推荐你睡醒了再玩会有更好的游戏体验";
-      const floorFivePost = document.querySelector('[data-forum-floor="5"]');
+      const floorSixPost = document.querySelector('[data-forum-floor="6"]');
       const systemPost = document.querySelector("[data-forum-system]");
       const systemTime = systemPost?.querySelector("time");
       const systemMessage = systemPost?.querySelector("[data-system-message]");
@@ -163,8 +170,8 @@
         timeElement.dateTime = `${localDates[day]}T${clock}`;
       });
 
-      if (floorFivePost) {
-        floorFivePost.hidden = minutesSinceMidnight < 2;
+      if (floorSixPost) {
+        floorSixPost.hidden = minutesSinceMidnight < 2;
       }
 
       if (systemTime && systemMessage && minutesSinceMidnight < 5 * 60) {
@@ -174,5 +181,6 @@
       }
     })();
   </script>
+  <script src="opening-intro.js"></script>
 </body>
 </html>
