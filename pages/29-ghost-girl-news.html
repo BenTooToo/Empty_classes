@@ -96,86 +96,44 @@
         const zone = card.querySelector("[data-redaction-zone]");
         const eyeStrip = card.querySelector("[data-eye-strip]");
         const selection = card.querySelector("[data-eye-selection]");
-        let startX = 0;
-        let isDragging = false;
-
-        const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
         const reset = () => {
-          zone.classList.remove("has-selection", "is-dragging");
+          zone.classList.remove("has-selection");
           eyeStrip.style.clipPath = "";
           selection.style.clipPath = "";
         };
 
-        const applySelection = (from, to) => {
-          const rect = zone.getBoundingClientRect();
-          const left = clamp(Math.min(from, to), 0, rect.width);
-          const right = clamp(Math.max(from, to), 0, rect.width);
-          const width = right - left;
-
-          if (width < 7) {
-            reset();
-            return;
-          }
-
-          const selectionInset = `inset(0 ${rect.width - right}px 0 ${left}px)`;
-          const revealInset = `inset(0 ${left}px 0 ${rect.width - right}px)`;
-          eyeStrip.style.clipPath = revealInset;
-          selection.style.clipPath = selectionInset;
+        const reveal = () => {
+          eyeStrip.style.clipPath = "inset(0)";
+          selection.style.clipPath = "inset(0)";
           zone.classList.add("has-selection");
         };
 
-        const localX = (event) => {
-          const rect = zone.getBoundingClientRect();
-          return clamp(event.clientX - rect.left, 0, rect.width);
+        const cardIsInsideRange = (range) => {
+          try {
+            return range.comparePoint(card, 0) === 0
+              && range.comparePoint(card, card.childNodes.length) === 0;
+          } catch {
+            return false;
+          }
         };
 
-        zone.addEventListener("pointerdown", (event) => {
-          if (event.button !== 0) {
-            return;
-          }
+        const syncWithNativeSelection = () => {
+          const nativeSelection = window.getSelection();
+          const crossesCard = nativeSelection
+            && !nativeSelection.isCollapsed
+            && Array.from({ length: nativeSelection.rangeCount }, (_, index) => nativeSelection.getRangeAt(index))
+              .some(cardIsInsideRange);
 
-          event.preventDefault();
-          isDragging = true;
-          startX = localX(event);
-          reset();
-          zone.classList.add("is-dragging");
-          zone.setPointerCapture(event.pointerId);
-        });
+          if (crossesCard) reveal();
+          else reset();
+        };
 
-        zone.addEventListener("pointermove", (event) => {
-          if (!isDragging) {
-            return;
-          }
-
-          event.preventDefault();
-          applySelection(startX, localX(event));
-        });
-
-        zone.addEventListener("pointerup", (event) => {
-          if (!isDragging) {
-            return;
-          }
-
-          isDragging = false;
-          zone.classList.remove("is-dragging");
-          applySelection(startX, localX(event));
-          zone.releasePointerCapture(event.pointerId);
-        });
-
-        zone.addEventListener("pointercancel", () => {
-          isDragging = false;
-          reset();
-        });
-
-        document.addEventListener("pointerdown", (event) => {
-          if (!card.contains(event.target)) {
-            reset();
-          }
-        });
+        document.addEventListener("selectionchange", syncWithNativeSelection);
 
         document.addEventListener("keydown", (event) => {
           if (event.key === "Escape") {
+            window.getSelection()?.removeAllRanges();
             reset();
           }
         });

@@ -115,7 +115,7 @@
     showChoices("游戏目前存在闪烁，不推荐你游玩这个游戏。", [
       { label: "谢谢你，好心人", action: askFirstTime },
       {
-        label: ["我真是", { text: "████", redacted: true }, "了狗了"],
+        label: ["我真是", { text: "██", redacted: true }, "了狗了"],
         action: askFirstTime
       }
     ]);
@@ -266,7 +266,8 @@
     playLockedMessage("你凭借自己惊人的反应力，脱开了大货车", () => {
       playSequence([
         "你感觉到冥冥之中有一股力量在帮助你。",
-        "你看到大卡车进行了一个180度的漂移。"
+        "你看到大卡车进行了一个180度的漂移。",
+        "卡车的驾驶座上有一个熟悉的身影。"
       ], askEscape);
     });
   }
@@ -293,6 +294,7 @@
 
   function askEscape() {
     showChoices("你本能地想要逃离这里。", [
+      { label: "逃跑", action: failToEscape },
       { label: "逃跑", action: failToEscape },
       { label: "逃跑", action: failToEscape }
     ]);

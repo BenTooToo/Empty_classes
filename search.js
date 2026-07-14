@@ -58,7 +58,14 @@ const searchRecords = [
     title: "学生名单",
     type: "名单",
     href: "pages/09-student-roster.html",
-    keys: ["学生名单", "信息委员", "美术委员","班长"]
+    keys: ["学生","名单","学生名单", "信息委员", "美术委员","班长"]
+  },
+  {
+    title: "震惊，折棠6中优秀学生跳楼自杀",
+    type: "娱乐新闻",
+    href: "pages/39-liang-zhiyuan-news.html",
+    keys: ["梁致远"],
+    text: "原折棠市第六中学高三（7）班班长梁致远坠楼身亡，事件引发广泛讨论。"
   },
   {
     title: "截图",

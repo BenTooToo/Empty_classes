@@ -3509,6 +3509,29 @@ body.opening-active {
   cursor: default;
 }
 
+.ent-memorial-photo {
+  float: right;
+  width: min(38%, 260px);
+  margin: 6px 0 16px 24px;
+}
+
+.ent-memorial-photo img {
+  aspect-ratio: 4 / 5;
+  max-height: none;
+  object-fit: cover;
+  object-position: center 24%;
+  filter: grayscale(1) contrast(1.08);
+  cursor: default;
+}
+
+@media (max-width: 620px) {
+  .ent-memorial-photo {
+    float: none;
+    width: min(72%, 220px);
+    margin: 16px auto 18px;
+  }
+}
+
 .ent-id-evidence {
   max-width: 480px;
   margin-right: auto;
@@ -3522,7 +3545,7 @@ body.opening-active {
   border: 1px solid #d7d7d7;
   background: #e6e8ed;
   overflow: hidden;
-  user-select: none;
+  user-select: auto;
 }
 
 .redacted-id-base {
@@ -3545,9 +3568,9 @@ body.opening-active {
     0 0 0 1px rgba(0, 0, 0, 0.92),
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
     inset 0 -1px 0 rgba(0, 0, 0, 0.82);
-  cursor: text;
+  cursor: auto;
   overflow: hidden;
-  touch-action: none;
+  pointer-events: none;
 }
 
 .eye-strip,

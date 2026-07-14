@@ -1,5 +1,5 @@
 (() => {
-  const totalMainPages = 33;
+  const totalMainPages = 34;
   const totalExtraPages = 6;
   const mainPages = {
     "school.html": 1,
@@ -7,37 +7,38 @@
     "04-stop-maintenance-notice.html": 3,
     "05-class-album.html": 4,
     "09-student-roster.html": 5,
-    "10-info-diary-01.html": 28,
-    "28-zhang-yuhang-call-record.html": 7,
-    "24-lin-ruoxuan-profile.html": 8,
-    "25-lin-ruoxuan-news.html": 9,
-    "29-ghost-girl-news.html": 10,
-    "31-omoyeta-ritual-thread.html": 11,
-    "admin.html": 12,
-    "admin-monitor-dashboard.html": 13,
-    "admin-soul-return-game.html": 16,
-    "admin-hash-cracker.html": 17,
-    "35-pancake-control.html": 18,
-    "admin-art-dashboard.html": 19,
-    "admin-sports-dashboard.html": 22,
-    "34-author-note.html": 26,
-    "admin-info-dashboard.html": 27,
-    "admin-surveillance-console.html": 30,
-    "23-true-ending.html": 31,
-    "36-ending-good.html": 32,
-    "37-ending-desire.html": 33
+    "39-liang-zhiyuan-news.html": 7,
+    "28-zhang-yuhang-call-record.html": 8,
+    "24-lin-ruoxuan-profile.html": 9,
+    "25-lin-ruoxuan-news.html": 10,
+    "29-ghost-girl-news.html": 11,
+    "31-omoyeta-ritual-thread.html": 12,
+    "admin.html": 13,
+    "admin-monitor-dashboard.html": 14,
+    "admin-soul-return-game.html": 17,
+    "admin-hash-cracker.html": 18,
+    "35-pancake-control.html": 19,
+    "admin-art-dashboard.html": 20,
+    "admin-sports-dashboard.html": 23,
+    "34-author-note.html": 27,
+    "admin-info-dashboard.html": 28,
+    "10-info-diary-01.html": 29,
+    "admin-surveillance-console.html": 31,
+    "23-true-ending.html": 32,
+    "36-ending-good.html": 33,
+    "37-ending-desire.html": 34
   };
 
   const dynamicMainPages = {
     "monitor:absence-correction": 6,
-    "monitor:monitor-diary": 14,
-    "monitor:monitor-chat": 15,
-    "art:art-diary": 20,
-    "art:soul-return-ritual": 21,
-    "sports:hospital-report": 23,
-    "sports:sports-info-removal": 24,
-    "sports:sports-familiar-self": 25,
-    "info:info-diary-02": 29
+    "monitor:monitor-diary": 15,
+    "monitor:monitor-chat": 16,
+    "art:art-diary": 21,
+    "art:soul-return-ritual": 22,
+    "sports:hospital-report": 24,
+    "sports:sports-info-removal": 25,
+    "sports:sports-familiar-self": 26,
+    "info:info-diary-02": 30
   };
 
   const extraPages = {
