@@ -392,6 +392,7 @@
       document.body.classList.remove("opening-active");
       intro.hidden = true;
       intro.setAttribute("aria-hidden", "true");
+      document.title = "黑箱同城 - 盘点那些bug特别多的网站";
       window.scrollTo({ top: 0, behavior: "instant" });
     }, 1700);
   }
