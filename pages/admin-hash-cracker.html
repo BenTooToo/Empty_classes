@@ -20,6 +20,10 @@
       <section class="hash-unlock-panel" id="hashUnlockPanel" aria-labelledby="hashUnlockTitle">
         <h2 id="hashUnlockTitle">程序锁定</h2>
         <form class="pin-form" id="pinForm" autocomplete="off">
+          <p class="hash-recovery-success" id="hashRecoverySuccess" role="status" hidden>
+            <strong>已解锁成功</strong>
+            <span>锁定程序已被关闭，请自由尝试密码</span>
+          </p>
           <div class="pin-boxes" aria-label="四位数密码">
             <input class="pin-box" id="pinDigit1" type="text" inputmode="numeric" maxlength="1" aria-label="第 1 位密码">
             <input class="pin-box" id="pinDigit2" type="text" inputmode="numeric" maxlength="1" aria-label="第 2 位密码">
@@ -36,6 +40,15 @@
         <p>正在载入加密核心...</p>
       </section>
 
+      <section class="hash-lockout-panel" id="hashLockoutPanel" hidden aria-labelledby="hashLockoutTitle">
+        <h2 id="hashLockoutTitle">安全警告</h2>
+        <div class="hash-lockout-console">
+          <p>请输入单词 <code>unlock</code> 来重新尝试输入密码</p>
+          <label for="hashRecoveryInput">恢复指令</label>
+          <input id="hashRecoveryInput" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="输入恢复指令">
+        </div>
+      </section>
+
       <section class="hash-tool-panel" id="hashToolPanel" hidden aria-labelledby="hashToolTitle">
         <h2 id="hashToolTitle">哈希生成器</h2>
         <form class="hash-date-form" id="hashDateForm" autocomplete="off">
@@ -47,6 +60,10 @@
         <output class="hash-output" id="hashOutput" aria-live="polite"></output>
       </section>
     </main>
+  </div>
+
+  <div class="hash-jumpscare" id="hashJumpscare" hidden aria-hidden="true">
+    <img src="../pics/hash-bloodshot-eyes-jumpscare.png" alt="一双布满血丝、直视屏幕的眼睛">
   </div>
 
   <script src="../admin-hash-cracker.js"></script>

@@ -5,12 +5,37 @@ const pinError = document.querySelector("#pinError");
 const unlockPanel = document.querySelector("#hashUnlockPanel");
 const loadingPanel = document.querySelector("#hashLoadingPanel");
 const toolPanel = document.querySelector("#hashToolPanel");
+const lockoutPanel = document.querySelector("#hashLockoutPanel");
+const recoveryInput = document.querySelector("#hashRecoveryInput");
+const recoverySuccess = document.querySelector("#hashRecoverySuccess");
+const jumpscare = document.querySelector("#hashJumpscare");
 const dateForm = document.querySelector("#hashDateForm");
 const dateInput = document.querySelector("#hashDateInput");
 const hashOutput = document.querySelector("#hashOutput");
 const digits = ["", "", "", ""];
 const diaryDatePassword = "20160304";
 const fixedPassword = "6D3F8A91C4E72B0F9A5D13E8B6C0472AD9F01C35E8B64A7F2D0C93B18E5A4F6D";
+const lockProgramStorageKey = "hash-lock-program-disabled";
+let failedAttempts = 0;
+let consoleLocked = false;
+let jumpscareTriggered = false;
+let lockProgramDisabled = loadLockProgramState();
+
+function loadLockProgramState() {
+  try {
+    return window.localStorage.getItem(lockProgramStorageKey) === "true";
+  } catch (error) {
+    return false;
+  }
+}
+
+function saveLockProgramState() {
+  try {
+    window.localStorage.setItem(lockProgramStorageKey, "true");
+  } catch (error) {
+    // 浏览器禁用本地存储时，本次页面内仍然保持解锁状态。
+  }
+}
 
 async function sha256(value) {
   if (!crypto.subtle) {
@@ -50,6 +75,47 @@ function showPinError() {
   clearPin();
 }
 
+function lockPasswordConsole() {
+  consoleLocked = true;
+  unlockPanel.hidden = true;
+  loadingPanel.hidden = true;
+  toolPanel.hidden = true;
+  lockoutPanel.hidden = false;
+  window.setTimeout(() => recoveryInput.focus(), 80);
+}
+
+function triggerJumpscare() {
+  if (jumpscareTriggered) {
+    return;
+  }
+
+  jumpscareTriggered = true;
+  jumpscare.hidden = false;
+  jumpscare.setAttribute("aria-hidden", "false");
+  document.body.classList.add("hash-jumpscare-active");
+
+  window.setTimeout(() => {
+    jumpscare.classList.add("is-ending");
+
+    window.setTimeout(() => {
+      jumpscare.hidden = true;
+      jumpscare.setAttribute("aria-hidden", "true");
+      jumpscare.classList.remove("is-ending");
+      document.body.classList.remove("hash-jumpscare-active");
+
+      consoleLocked = false;
+      lockProgramDisabled = true;
+      saveLockProgramState();
+      failedAttempts = 0;
+      recoveryInput.value = "";
+      lockoutPanel.hidden = true;
+      unlockPanel.hidden = false;
+      recoverySuccess.hidden = false;
+      clearPin();
+    }, 360);
+  }, 2000);
+}
+
 function openHashTool() {
   unlockPanel.hidden = true;
   loadingPanel.hidden = false;
@@ -62,12 +128,28 @@ function openHashTool() {
 }
 
 function validatePin() {
+  if (consoleLocked) {
+    return;
+  }
+
   if (digits.some((digit) => !digit)) {
     return;
   }
 
   if (digits.join("") === unlockCode) {
     openHashTool();
+    return;
+  }
+
+  if (lockProgramDisabled) {
+    showPinError();
+    return;
+  }
+
+  failedAttempts += 1;
+
+  if (failedAttempts >= 3) {
+    lockPasswordConsole();
     return;
   }
 
@@ -114,6 +196,14 @@ pinForm.addEventListener("submit", (event) => {
   validatePin();
 });
 
+recoveryInput.addEventListener("input", () => {
+  const command = recoveryInput.value.trim().toLowerCase();
+
+  if (command.startsWith("unlo")) {
+    triggerJumpscare();
+  }
+});
+
 dateForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -132,5 +222,9 @@ dateForm.addEventListener("submit", async (event) => {
   const hash = await sha256(inputValue);
   hashOutput.textContent = hash.toUpperCase();
 });
+
+if (lockProgramDisabled) {
+  recoverySuccess.hidden = false;
+}
 
 pinInputs[0].focus();
