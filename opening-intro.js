@@ -223,6 +223,11 @@
   }
 
   function rejectSecondPost() {
+    try {
+      window.localStorage.setItem("zhetang6_choice_rebellious_v1", "true");
+    } catch {
+      // 本地存储不可用时不影响开场流程。
+    }
     playDayTransition("第三天", () => {
       playSequence([
         "肖云是个反社会精神病。",
@@ -263,6 +268,11 @@
     if (truckChoiceLocked) return;
     truckChoiceLocked = true;
     window.clearTimeout(choiceDeadlineTimer);
+    try {
+      window.localStorage.setItem("zhetang6_choice_quick_reaction_v1", "true");
+    } catch {
+      // 本地存储不可用时不影响开场流程。
+    }
     playLockedMessage("你凭借自己惊人的反应力，脱开了大货车", () => {
       playSequence([
         "你感觉到冥冥之中有一股力量在帮助你。",

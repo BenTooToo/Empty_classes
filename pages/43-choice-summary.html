@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>游戏选择总结</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="ending-choice-page choice-summary-page">
+  <main class="ending-choice-stage" aria-live="polite">
+    <p class="ending-choice-text" id="summaryText"></p>
+    <div class="ending-choice-options" id="summaryOptions" hidden></div>
+    <p class="ending-choice-hint" id="summaryHint">按任意键或点击画面继续</p>
+  </main>
+
+  <div class="summary-jumpscare" id="summaryJumpscare" aria-hidden="true" hidden>
+    <div class="summary-jumpscare-face">
+      <img class="summary-jumpscare-base" src="../ghost-girl-id-portrait.png" alt="">
+      <img class="summary-jumpscare-eyes" src="../ghost-girl-id-portrait.png" alt="">
+    </div>
+  </div>
+  <div class="summary-red-screen" id="summaryRedScreen" aria-hidden="true"></div>
+
+  <script src="../choice-summary.js"></script>
+</body>
+</html>

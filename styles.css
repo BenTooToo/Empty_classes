@@ -3030,8 +3030,253 @@ body.opening-active {
 .ending-forum-page .ending-linyuan-post { border-color: #5c8f73; }
 .ending-forum-page .ending-author-post { margin-top: 24px; border-color: #6c5790; }
 .ending-forum-page .ending-author-post .post-user { background: #eee9f6; }
+.ending-forum-page .ending-story-link {
+  display: inline-block;
+  margin-left: 0.2em;
+  padding: 4px 12px;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  font-weight: 800;
+  line-height: 1.5;
+  text-decoration: none;
+}
+.ending-forum-page .ending-story-link:hover,
+.ending-forum-page .ending-story-link:focus-visible {
+  background: #315f49;
+  color: #fff;
+  outline: none;
+}
 .desire-ending-page .memoir-sheet strong { color: #861e2d; }
 .desire-ending-page .desire-author-note { margin-top: 1em; }
+
+.special-thanks-page {
+  margin: 0;
+  min-height: 100vh;
+  background: #fff;
+  color: #000;
+  font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+}
+
+.special-thanks-card {
+  width: min(680px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: clamp(72px, 14vh, 150px) 0 120px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.special-thanks-card h1 {
+  margin: 0 0 clamp(54px, 9vh, 96px);
+  color: #000;
+  font-size: clamp(32px, 6vw, 56px);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.special-thanks-game-title {
+  margin: 0 0 22px;
+  color: #000;
+  font-size: clamp(18px, 3vw, 28px);
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-indent: 0.24em;
+}
+
+.special-thanks-card ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  gap: 34px;
+  list-style: none;
+}
+
+.special-thanks-card li {
+  color: #000;
+  font-size: clamp(20px, 3vw, 28px);
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+}
+
+.special-thanks-actions {
+  position: fixed;
+  right: clamp(18px, 3vw, 42px);
+  bottom: clamp(18px, 3vw, 34px);
+  left: clamp(18px, 3vw, 42px);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  gap: 18px;
+}
+
+.special-thanks-actions a {
+  display: inline-block;
+  padding: 10px 16px;
+  border: 1px solid #111;
+  background: #fff;
+  color: #000;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.special-thanks-actions a:hover,
+.special-thanks-actions a:focus-visible {
+  background: #000;
+  color: #fff;
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.special-thanks-restart { justify-self: start; }
+.special-thanks-author { justify-self: center; }
+.special-thanks-summary { justify-self: end; }
+
+.choice-summary-page .summary-text-fade {
+  opacity: 0;
+  transition: opacity 850ms ease;
+}
+
+.summary-jumpscare {
+  position: fixed;
+  z-index: 50;
+  inset: 0;
+  overflow: hidden;
+  background: #000;
+  pointer-events: none;
+}
+
+.summary-jumpscare[hidden] { display: none; }
+
+.summary-jumpscare-face {
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  width: 72px;
+  height: 96px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 0 18px #000;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.16);
+  transform-origin: center;
+}
+
+.summary-jumpscare-face img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 24%;
+  image-rendering: pixelated;
+}
+
+.summary-jumpscare-base { filter: grayscale(1) contrast(2.2) brightness(0.54); }
+.summary-jumpscare-eyes {
+  clip-path: inset(28% 0 52% 0);
+  filter: grayscale(1) contrast(2.8) invert(1);
+  mix-blend-mode: difference;
+}
+
+.summary-jumpscare.is-rushing .summary-jumpscare-face {
+  animation: soulFaceRush 900ms cubic-bezier(0.74, 0.02, 0.92, 0.42) forwards;
+}
+
+.summary-jumpscare.is-rushing .summary-jumpscare-eyes {
+  animation: soulEyesInvert 56ms steps(1, end) infinite;
+}
+
+.summary-red-screen {
+  position: fixed;
+  z-index: 60;
+  inset: 0;
+  background: #a40000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms linear, background 1.05s ease;
+}
+
+.summary-red-screen.is-visible { opacity: 1; }
+.summary-red-screen.is-visible.to-black { background: #000; }
+.summary-red-screen.is-visible.is-final { background: #a40000; opacity: 1; }
+
+@media (max-width: 680px) {
+  .special-thanks-card { padding-bottom: 190px; }
+  .special-thanks-actions {
+    position: absolute;
+    grid-template-columns: 1fr;
+  }
+  .special-thanks-actions a {
+    width: min(320px, 100%);
+    justify-self: center;
+  }
+}
+
+.afterstory-ending-active .ending-choice-stage {
+  opacity: 0;
+  transition: opacity 1100ms ease;
+}
+
+.afterstory-ending-animation {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  display: grid;
+  overflow: hidden;
+  place-items: center;
+  background: #000;
+  color: #fff;
+  font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+  opacity: 0;
+  animation: afterstoryEndingScreen 8.4s linear both;
+}
+
+.afterstory-ending-producer,
+.afterstory-ending-thanks {
+  position: absolute;
+  margin: 0;
+  font-weight: 300;
+  text-align: center;
+}
+
+.afterstory-ending-producer {
+  font-size: clamp(25px, 4.5vw, 48px);
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  animation: afterstoryEndingText 2.45s ease 1.15s both;
+}
+
+.afterstory-ending-thanks {
+  font-size: clamp(28px, 5vw, 54px);
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  animation: afterstoryEndingText 2.45s ease 4.05s both;
+}
+
+@keyframes afterstoryEndingScreen {
+  0% { background: #000; color: #fff; opacity: 0; }
+  11%, 78% { background: #000; color: #fff; opacity: 1; }
+  100% { background: #fff; color: #fff; opacity: 1; }
+}
+
+@keyframes afterstoryEndingText {
+  0% { opacity: 0; filter: blur(7px); transform: translateY(8px); }
+  28%, 66% { opacity: 1; filter: blur(0); transform: translateY(0); }
+  100% { opacity: 0; filter: blur(4px); transform: translateY(-7px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .afterstory-ending-animation,
+  .afterstory-ending-producer,
+  .afterstory-ending-thanks {
+    animation-timing-function: linear;
+  }
+}
 
 .ending-photo-placeholder > div {
   display: grid;

@@ -179,6 +179,14 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
+  if (query === normalize("张雅琪")) {
+    try {
+      window.localStorage.setItem("zhetang6_searched_zhang_yaqi_v1", "true");
+    } catch {
+      // 本地存储不可用时不影响搜索结果。
+    }
+  }
+
   const matches = searchRecords.filter((record) => {
     return record.keys.some((key) => normalize(key) === query);
   });
@@ -282,6 +290,11 @@ function renderGuestbookEntry(entry) {
 
 function publishGuestbookEntry() {
   if (cachedGuestbookEntry) {
+    try {
+      window.localStorage.setItem("zhetang6_guestbook_second_attempt_v1", "true");
+    } catch {
+      // 本地存储不可用时不影响留言次数限制。
+    }
     showGuestbookToast("你已经发表一次观点了，请给其他同学留点位置奥");
     return;
   }
