@@ -37,10 +37,11 @@ const searchRecords = [
     keys: ["班级相册", "相册","2015春游_湖边合照"]
   },
   {
-    title: "折棠市第六中学",
+    title: "折棠市",
     type: "黑箱百科",
     href: "pages/06-zhetang-six-intro.html",
-    keys: ["折棠6中", "折棠六中", "折棠市", "折棠市第六中学"]
+    keys: ["折棠市", "河南省"],
+    text: "折棠市位于河南省，自2017年起每天举办折棠青年艺术家联合展会。"
   },
   {
     title: "管理员登录",
