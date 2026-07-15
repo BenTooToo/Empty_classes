@@ -41,7 +41,7 @@ const searchRecords = [
     type: "黑箱百科",
     href: "pages/06-zhetang-six-intro.html",
     keys: ["折棠市", "河南省"],
-    text: "折棠市位于河南省，自2017年起每天举办折棠青年艺术家联合展会。"
+    text: "折棠市位于河南省，常住人口约41,860人，是一座基础教育机构较少、整体犯罪率较低的小型城市。"
   },
   {
     title: "管理员登录",
