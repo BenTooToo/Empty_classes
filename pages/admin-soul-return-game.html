@@ -14,6 +14,21 @@
       <div class="soul-crosshair" aria-hidden="true">+</div>
       <div class="soul-mouse-guide" id="soulMouseGuide" aria-hidden="true">
         <span class="soul-mouse-icon"><i></i></span>
+        <span class="soul-control-hint soul-control-hint-desktop">请按 WASD 或方向键移动<br><small>点击画面后移动鼠标环顾，靠近画像点击调查</small></span>
+        <span class="soul-control-hint soul-control-hint-mobile">使用虚拟按键移动与转向<br><small>靠近画像后点击“调查”</small></span>
+      </div>
+      <div class="soul-touch-controls" id="soulTouchControls" aria-label="触屏游戏控制器">
+        <div class="soul-touch-move" aria-label="移动">
+          <button type="button" class="soul-touch-key soul-touch-up" data-hold-code="KeyW" aria-label="向前">▲</button>
+          <button type="button" class="soul-touch-key soul-touch-left" data-hold-code="KeyA" aria-label="向左平移">◀</button>
+          <button type="button" class="soul-touch-key soul-touch-down" data-hold-code="KeyS" aria-label="向后">▼</button>
+          <button type="button" class="soul-touch-key soul-touch-right" data-hold-code="KeyD" aria-label="向右平移">▶</button>
+        </div>
+        <div class="soul-touch-actions" aria-label="视角与调查">
+          <button type="button" class="soul-touch-key" data-hold-code="ArrowLeft" aria-label="向左转向">↶</button>
+          <button type="button" class="soul-touch-interact" id="soulTouchInteract" aria-label="调查眼前的画像">调查</button>
+          <button type="button" class="soul-touch-key" data-hold-code="ArrowRight" aria-label="向右转向">↷</button>
+        </div>
       </div>
       <div class="soul-mirror-note" id="soulMirrorNote" hidden>
         <strong>肖青</strong>

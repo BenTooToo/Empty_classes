@@ -10,6 +10,8 @@ const nearbyName = document.querySelector('#soulNearbyName');
 const nearbyRole = document.querySelector('#soulNearbyRole');
 const nearbyStatus = document.querySelector('#soulNearbyStatus');
 const mouseGuide = document.querySelector('#soulMouseGuide');
+const touchControls = document.querySelector('#soulTouchControls');
+const touchInteract = document.querySelector('#soulTouchInteract');
 const mirrorNote = document.querySelector('#soulMirrorNote');
 const jumpscare = document.querySelector('#soulJumpscare');
 const jumpscareWhiteout = document.querySelector('#soulJumpscareWhiteout');
@@ -70,6 +72,13 @@ let viewActivated = false;
 let mirrorVisibleSince = 0;
 let jumpscareStarted = false;
 let jumpscareActive = false;
+const usesTouchControls = window.matchMedia('(pointer: coarse)').matches;
+
+function dismissControlGuide() {
+  if (!mouseGuide || mouseGuide.classList.contains('dismissed')) return;
+  mouseGuide.classList.add('dismissed');
+  window.setTimeout(() => mouseGuide?.remove(), 320);
+}
 
 portraits.forEach((portrait) => {
   portrait.asset = new Image();
@@ -341,6 +350,7 @@ function startMirrorJumpscare() {
   if (jumpscareStarted) return;
   jumpscareStarted = true;
   jumpscareActive = true;
+  keys.clear();
   mirrorNote.hidden = true;
   nearbyRecord.hidden = true;
   jumpscare.hidden = false;
@@ -402,13 +412,18 @@ function frame(now) {
 window.addEventListener('keydown', (event) => {
   if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(event.code)) event.preventDefault();
   keys.add(event.code);
+  if (['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(event.code)) dismissControlGuide();
 });
 window.addEventListener('keyup', (event) => keys.delete(event.code));
 canvas.addEventListener('click', () => {
+  if (usesTouchControls) {
+    dismissControlGuide();
+    interactWithPortrait();
+    return;
+  }
   if (!viewActivated) {
     viewActivated = true;
-    mouseGuide?.classList.add('dismissed');
-    window.setTimeout(() => mouseGuide?.remove(), 320);
+    dismissControlGuide();
     canvas.requestPointerLock?.();
     return;
   }
@@ -417,6 +432,41 @@ canvas.addEventListener('click', () => {
 });
 document.addEventListener('mousemove', (event) => {
   if (document.pointerLockElement === canvas) camera.angle += event.movementX * .0025;
+});
+
+touchControls?.querySelectorAll('[data-hold-code]').forEach((button) => {
+  const code = button.dataset.holdCode;
+  const release = (event) => {
+    event.preventDefault();
+    keys.delete(code);
+    button.classList.remove('is-pressed');
+  };
+  button.addEventListener('pointerdown', (event) => {
+    event.preventDefault();
+    if (jumpscareActive) return;
+    dismissControlGuide();
+    button.setPointerCapture?.(event.pointerId);
+    keys.add(code);
+    button.classList.add('is-pressed');
+  });
+  button.addEventListener('pointerup', release);
+  button.addEventListener('pointercancel', release);
+  button.addEventListener('lostpointercapture', release);
+});
+
+touchInteract?.addEventListener('pointerdown', (event) => {
+  event.preventDefault();
+  if (jumpscareActive) return;
+  dismissControlGuide();
+  interactWithPortrait();
+  touchInteract.classList.add('is-pressed');
+});
+touchInteract?.addEventListener('pointerup', () => touchInteract.classList.remove('is-pressed'));
+touchInteract?.addEventListener('pointercancel', () => touchInteract.classList.remove('is-pressed'));
+
+window.addEventListener('blur', () => keys.clear());
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) keys.clear();
 });
 
 context.imageSmoothingEnabled = false;
