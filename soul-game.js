@@ -13,6 +13,10 @@ const mouseGuide = document.querySelector('#soulMouseGuide');
 const mirrorNote = document.querySelector('#soulMirrorNote');
 const jumpscare = document.querySelector('#soulJumpscare');
 const jumpscareWhiteout = document.querySelector('#soulJumpscareWhiteout');
+const reducedStimulation = (() => {
+  try { return localStorage.getItem('zhetang6_reduced_stimulation_v1') === 'true'; }
+  catch { return false; }
+})();
 const WIDTH = canvas.width;
 const HEIGHT = canvas.height;
 const FOV = Math.PI / 3;
@@ -340,6 +344,16 @@ function startMirrorJumpscare() {
   mirrorNote.hidden = true;
   nearbyRecord.hidden = true;
   jumpscare.hidden = false;
+
+  if (reducedStimulation) {
+    jumpscare.classList.add('is-safe');
+    window.setTimeout(() => {
+      jumpscare.hidden = true;
+      jumpscareActive = false;
+    }, 1200);
+    return;
+  }
+
   jumpscare.classList.add('is-rushing');
 
   window.setTimeout(() => jumpscareWhiteout.classList.add('is-visible'), 720);

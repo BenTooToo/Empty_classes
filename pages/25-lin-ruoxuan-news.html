@@ -122,7 +122,13 @@
 
       ambulanceSequenceStarted = true;
       ambulancePhoto.src = "../lin-ruoxuan-ambulance-cn.png";
-      document.body.classList.add("ent-red-alert");
+      let reducedStimulation = false;
+      try {
+        reducedStimulation = localStorage.getItem("zhetang6_reduced_stimulation_v1") === "true";
+      } catch {
+        // 本地存储不可用时保持普通版本。
+      }
+      if (!reducedStimulation) document.body.classList.add("ent-red-alert");
       rankItems.forEach((item) => {
         item.textContent = "救命！！！";
       });

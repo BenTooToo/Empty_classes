@@ -3,6 +3,10 @@ const options = document.querySelector("#summaryOptions");
 const hint = document.querySelector("#summaryHint");
 const jumpscare = document.querySelector("#summaryJumpscare");
 const redScreen = document.querySelector("#summaryRedScreen");
+const reducedStimulation = (() => {
+  try { return localStorage.getItem("zhetang6_reduced_stimulation_v1") === "true"; }
+  catch { return false; }
+})();
 
 const storageKeys = {
   guestbook: "zhetang6_guestbook_guest2094_v1",
@@ -340,6 +344,18 @@ function triggerJumpscare(keepRed, after) {
   jumpscare.hidden = false;
   jumpscare.classList.remove("is-rushing");
   redScreen.classList.remove("is-visible", "to-black", "is-final");
+
+  if (reducedStimulation) {
+    jumpscare.classList.add("is-safe");
+    if (keepRed) return;
+    window.setTimeout(() => {
+      jumpscare.hidden = true;
+      jumpscare.classList.remove("is-safe");
+      after?.();
+    }, 1400);
+    return;
+  }
+
   void jumpscare.offsetWidth;
   jumpscare.classList.add("is-rushing");
 

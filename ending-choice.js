@@ -209,6 +209,14 @@ function finishChoice(wish, savesFriend) {
   options.hidden = true;
   hint.hidden = true;
   storyText.textContent = "";
+  try {
+    if (localStorage.getItem("zhetang6_reduced_stimulation_v1") === "true") {
+      window.location.assign(savesFriend ? "36-ending-good.html" : `37-ending-desire.html?wish=${encodeURIComponent(wish)}`);
+      return;
+    }
+  } catch {
+    // 本地存储不可用时保持普通转场。
+  }
   document.body.classList.add("ending-fade-white");
   window.setTimeout(() => window.location.assign(savesFriend ? "36-ending-good.html" : `37-ending-desire.html?wish=${encodeURIComponent(wish)}`), 1800);
 }

@@ -12,6 +12,18 @@
   let nextAction = null;
   let choiceDeadlineTimer = 0;
   let truckChoiceLocked = false;
+  const reducedStimulationKey = "zhetang6_reduced_stimulation_v1";
+  let reducedStimulation = false;
+
+  function setReducedStimulation(enabled) {
+    reducedStimulation = enabled;
+    document.documentElement.classList.toggle("reduced-stimulation", enabled);
+    try {
+      window.localStorage.setItem(reducedStimulationKey, enabled ? "true" : "false");
+    } catch {
+      // 本地存储不可用时，本次页面内仍然使用玩家选择的版本。
+    }
+  }
 
   const normalizeLine = (line) => (Array.isArray(line) ? line : [line]).map((part) =>
     typeof part === "string"
@@ -111,12 +123,21 @@
     return renderedButtons;
   }
 
-  function askPhotosensitiveAcknowledgement() {
-    showChoices("游戏目前存在闪烁，不推荐你游玩这个游戏。", [
-      { label: "谢谢你，好心人", action: askFirstTime },
+  function askAccessibleVersion() {
+    showChoices("你希望使用哪个版本？", [
       {
-        label: ["我真是", { text: "██", redacted: true }, "了狗了"],
-        action: askFirstTime
+        label: "好的，我需要去除刺激元素的版本",
+        action: () => {
+          setReducedStimulation(true);
+          playSequence(["已启用光敏友好版本：强光闪烁、全屏变色和跳杀将被移除或替换。"], askFirstTime);
+        }
+      },
+      {
+        label: ["不用去除，我有", { text: "大心脏", strong: true }],
+        action: () => {
+          setReducedStimulation(false);
+          askFirstTime();
+        }
       }
     ]);
   }
@@ -324,10 +345,14 @@
     hint.hidden = true;
     storyText.textContent = "";
     window.setTimeout(() => {
-      intro.classList.add("opening-fade-red");
       const endingUrl = lateReaction
         ? "pages/ending-minus-one.html?lateReaction=1"
         : "pages/ending-minus-one.html";
+      if (reducedStimulation) {
+        window.location.assign(endingUrl);
+        return;
+      }
+      intro.classList.add("opening-fade-red");
       window.setTimeout(() => window.location.assign(endingUrl), 1650);
     }, delayBeforeRed);
   }
@@ -350,7 +375,9 @@
   function playForumPrelude() {
     playUnskippableFadeSequence([
       "游戏在某个阶段会需要耳机，请提前准备好",
-      "游戏有一定的强光闪烁，光敏性癫痫患者请勿游玩",
+      reducedStimulation
+        ? "光敏友好版本已启用：强光闪烁、全屏变色和跳杀已移除"
+        : "游戏有一定的强光闪烁，光敏性癫痫或心脏病患者请勿游玩",
       "本2兔出品",
       "你是肖云",
       "你想要找到故事的真相",
@@ -398,6 +425,14 @@
     options.hidden = true;
     hint.hidden = true;
     storyText.textContent = "";
+    if (reducedStimulation) {
+      document.body.classList.remove("opening-active");
+      intro.hidden = true;
+      intro.setAttribute("aria-hidden", "true");
+      document.title = "黑箱同城 - 盘点那些bug特别多的网站";
+      window.scrollTo({ top: 0, behavior: "instant" });
+      return;
+    }
     intro.classList.add("opening-fade-white");
 
     window.setTimeout(() => {
@@ -431,14 +466,17 @@
     advanceStory(event);
   });
 
-  showChoices("你是否有光敏性癫痫？", [
+  showChoices("你是否有光敏性癫痫，或者心脏病？", [
     {
       label: "是的",
-      action: () => playSequence(["游戏目前存在闪烁，不推荐你游玩这个游戏。"], askPhotosensitiveAcknowledgement)
+      action: () => playSequence(["本游戏不建议光敏性癫痫或心脏病患者游玩。"], askAccessibleVersion)
     },
     {
       label: "没有",
-      action: () => playSequence(["很好。"], askFirstTime)
+      action: () => {
+        setReducedStimulation(false);
+        playSequence(["很好。"], askFirstTime);
+      }
     }
   ]);
 })();

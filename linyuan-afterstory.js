@@ -199,6 +199,13 @@ function playEndingAnimation() {
 
   const ending = document.createElement("div");
   ending.className = "afterstory-ending-animation";
+  try {
+    if (localStorage.getItem("zhetang6_reduced_stimulation_v1") === "true") {
+      ending.classList.add("is-safe");
+    }
+  } catch {
+    // 本地存储不可用时保持普通结尾动画。
+  }
   ending.setAttribute("aria-label", "日后谈结束动画");
   ending.innerHTML = `
     <p class="afterstory-ending-producer">本2兔出品</p>

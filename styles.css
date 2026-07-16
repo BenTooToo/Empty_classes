@@ -34,6 +34,10 @@
 .soul-jumpscare.is-rushing .soul-jumpscare-eyes { animation:soulEyesInvert 56ms steps(1,end) infinite; }
 .soul-jumpscare-whiteout { position:absolute;inset:0;z-index:19;background:#fff;opacity:0;pointer-events:none; }
 .soul-jumpscare-whiteout.is-visible { animation:soulWhiteout 600ms ease-out forwards; }
+.safe-jumpscare-image { display:none;width:100%;height:100%;object-fit:cover; }
+.soul-jumpscare.is-safe { display:grid;place-items:stretch;background:#000; }
+.soul-jumpscare.is-safe .soul-jumpscare-face { display:none; }
+.soul-jumpscare.is-safe .safe-jumpscare-image { display:block; }
 @keyframes soulFaceRush { 0%{transform:translate(-50%,-42%) scale(.16);opacity:.15} 10%{opacity:.88} 55%{transform:translate(-50%,-48%) scale(1.05);opacity:1} 100%{transform:translate(-50%,-50%) scale(7.4);opacity:1} }
 @keyframes soulEyesInvert { 0%,49%{filter:grayscale(1) contrast(3.2) invert(0)} 50%,100%{filter:grayscale(1) contrast(3.2) invert(1)} }
 @keyframes soulWhiteout { 0%{opacity:0} 30%{opacity:1} 68%{opacity:1} 100%{opacity:0} }
@@ -3191,6 +3195,9 @@ body.opening-active {
   animation: soulEyesInvert 56ms steps(1, end) infinite;
 }
 
+.summary-jumpscare.is-safe .summary-jumpscare-face { display: none; }
+.summary-jumpscare.is-safe .safe-jumpscare-image { display: block; }
+
 .summary-red-screen {
   position: fixed;
   z-index: 60;
@@ -3269,6 +3276,16 @@ body.opening-active {
   28%, 66% { opacity: 1; filter: blur(0); transform: translateY(0); }
   100% { opacity: 0; filter: blur(4px); transform: translateY(-7px); }
 }
+
+.afterstory-ending-animation.is-safe,
+.afterstory-ending-animation.is-safe .afterstory-ending-producer,
+.afterstory-ending-animation.is-safe .afterstory-ending-thanks {
+  animation: none;
+}
+
+.afterstory-ending-animation.is-safe { opacity: 1; }
+.afterstory-ending-animation.is-safe .afterstory-ending-producer { opacity: 1; transform: translateY(-42px); }
+.afterstory-ending-animation.is-safe .afterstory-ending-thanks { opacity: 1; transform: translateY(42px); }
 
 @media (prefers-reduced-motion: reduce) {
   .afterstory-ending-animation,
@@ -3648,6 +3665,22 @@ body.opening-active {
   object-fit: cover;
   filter: saturate(1.35) contrast(1.2);
   animation: hash-jumpscare-lunge 480ms cubic-bezier(0.1, 0.85, 0.2, 1) both;
+}
+
+.hash-jumpscare.is-safe {
+  display: grid;
+  background: #000;
+  animation: none;
+}
+
+.hash-jumpscare.is-safe .hash-jumpscare-original { display: none; }
+.hash-jumpscare.is-safe .safe-jumpscare-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: none;
+  animation: none;
 }
 
 .hash-jumpscare.is-ending {
@@ -4642,6 +4675,23 @@ body.opening-active {
   100% {
     opacity: 0.25;
   }
+}
+
+/* 光敏友好版本：保留叙事内容，但关闭强烈闪烁和全屏红色覆盖。 */
+.reduced-stimulation .ent-red-alert,
+.reduced-stimulation .garbled-cause,
+.reduced-stimulation .eye-redaction.has-selection .eye-strip,
+.reduced-stimulation .hash-loading-core {
+  animation: none !important;
+}
+
+.reduced-stimulation .ent-red-alert::before { display: none; }
+.reduced-stimulation .opening-intro.opening-fade-white,
+.reduced-stimulation .opening-intro.opening-fade-red,
+.reduced-stimulation .ending-choice-page.ending-fade-white {
+  background: #000;
+  color: #fff;
+  transition: none;
 }
 
 @keyframes garbledJitter {

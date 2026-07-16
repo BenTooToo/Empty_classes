@@ -20,6 +20,10 @@ let failedAttempts = 0;
 let consoleLocked = false;
 let jumpscareTriggered = false;
 let lockProgramDisabled = loadLockProgramState();
+const reducedStimulation = (() => {
+  try { return localStorage.getItem("zhetang6_reduced_stimulation_v1") === "true"; }
+  catch { return false; }
+})();
 
 function loadLockProgramState() {
   try {
@@ -94,26 +98,34 @@ function triggerJumpscare() {
   jumpscare.setAttribute("aria-hidden", "false");
   document.body.classList.add("hash-jumpscare-active");
 
+  if (reducedStimulation) {
+    jumpscare.classList.add("is-safe");
+    window.setTimeout(() => finishJumpscare(), 1400);
+    return;
+  }
+
   window.setTimeout(() => {
     jumpscare.classList.add("is-ending");
 
-    window.setTimeout(() => {
-      jumpscare.hidden = true;
-      jumpscare.setAttribute("aria-hidden", "true");
-      jumpscare.classList.remove("is-ending");
-      document.body.classList.remove("hash-jumpscare-active");
-
-      consoleLocked = false;
-      lockProgramDisabled = true;
-      saveLockProgramState();
-      failedAttempts = 0;
-      recoveryInput.value = "";
-      lockoutPanel.hidden = true;
-      unlockPanel.hidden = false;
-      recoverySuccess.hidden = false;
-      clearPin();
-    }, 360);
+    window.setTimeout(finishJumpscare, 360);
   }, 2000);
+}
+
+function finishJumpscare() {
+  jumpscare.hidden = true;
+  jumpscare.setAttribute("aria-hidden", "true");
+  jumpscare.classList.remove("is-ending", "is-safe");
+  document.body.classList.remove("hash-jumpscare-active");
+
+  consoleLocked = false;
+  lockProgramDisabled = true;
+  saveLockProgramState();
+  failedAttempts = 0;
+  recoveryInput.value = "";
+  lockoutPanel.hidden = true;
+  unlockPanel.hidden = false;
+  recoverySuccess.hidden = false;
+  clearPin();
 }
 
 function openHashTool() {
