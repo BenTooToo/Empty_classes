@@ -23,7 +23,7 @@
 .soul-game { width:100vw;height:100vh;min-height:100vh;display:block;background:#030303;image-rendering:pixelated; }
 .soul-3d-stage { position:relative;width:100%;height:100%;min-height:100vh;overflow:hidden;background:#030303;cursor:crosshair; }.soul-3d-stage canvas { display:block;width:100%;height:100%;min-height:100vh;outline:0;image-rendering:pixelated;image-rendering:crisp-edges;filter:contrast(1.16) saturate(.72); }.soul-3d-stage::after { content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(0,0,0,.18) 4px 5px),radial-gradient(circle at center,transparent 35%,rgba(0,0,0,.54) 100%);mix-blend-mode:multiply; }.soul-crosshair { position:absolute;top:50%;left:50%;z-index:3;transform:translate(-50%,-50%);color:#bcae7d99;font:16px monospace;text-shadow:1px 1px #000;pointer-events:none; }.soul-nearby-record { position:absolute;z-index:4;right:22px;bottom:22px;width:220px;padding:13px 15px;border:2px ridge #75643b;background:#0b0b08e8;box-shadow:0 8px 25px #000;color:#bdaf83;pointer-events:none; }.soul-nearby-record[hidden] { display:none; }.soul-nearby-record strong,.soul-nearby-record span,.soul-nearby-record b { display:block; }.soul-nearby-record strong { margin:0 0 3px;color:#b72c2c;font:700 20px SimSun;letter-spacing:4px; }.soul-nearby-record span { color:#9b9070;font-size:11px; }.soul-nearby-record b { margin-top:8px;color:#d52b27;font:900 14px SimSun,"Microsoft YaHei",sans-serif;letter-spacing:2px; }
 .soul-mouse-guide { position:absolute;left:50%;bottom:17%;z-index:5;transform:translateX(-50%);pointer-events:none;animation:soul-guide-bob 1.25s ease-in-out infinite;transition:opacity .28s,transform .28s; }.soul-mouse-guide.dismissed { opacity:0;transform:translate(-50%,8px); }.soul-mouse-icon { position:relative;display:block;width:25px;height:36px;border:2px solid #d8c58f;border-radius:13px 13px 11px 11px;background:#17130f;box-shadow:0 2px 0 #000,0 0 10px #d2b66b44; }.soul-mouse-icon::before { content:"";position:absolute;left:50%;top:0;width:1px;height:14px;background:#d8c58f; }.soul-mouse-icon i { position:absolute;left:3px;top:3px;width:8px;height:12px;border-radius:7px 2px 3px 2px;background:#b52d28;box-shadow:inset 1px 1px #ed8277; }.soul-mouse-icon i::after { content:"";position:absolute;left:2px;top:3px;width:3px;height:5px;border-radius:2px;background:#f1b1a8;animation:soul-left-click .9s ease-in-out infinite; } @keyframes soul-left-click { 50%{transform:translateY(2px);opacity:.4} } @keyframes soul-guide-bob { 50%{margin-bottom:4px} }
-.soul-control-hint { position:absolute;left:50%;top:46px;width:max-content;max-width:82vw;transform:translateX(-50%);padding:8px 12px;border:1px solid #8f7b45;background:#090907d9;color:#e3d29e;font:700 12px/1.55 "Microsoft YaHei",sans-serif;letter-spacing:1px;text-align:center;text-shadow:1px 1px #000;box-shadow:0 5px 18px #000; }.soul-control-hint small { color:#a89a73;font-size:10px;font-weight:400;letter-spacing:0; }.soul-control-hint-mobile { display:none; }
+.soul-control-hint { position:absolute;left:50%;top:46px;width:max-content;max-width:82vw;transform:translateX(-50%);padding:8px 12px;border:1px solid #8f7b45;background:#090907d9;color:#e3d29e;font:700 12px/1.55 "Microsoft YaHei",sans-serif;letter-spacing:1px;text-align:center;text-shadow:1px 1px #000;box-shadow:0 5px 18px #000; }.soul-control-hint small { color:#a89a73;font-size:10px;font-weight:400;letter-spacing:0; }
 .soul-touch-controls { display:none; }
 .soul-mirror-note[hidden]{display:none}.soul-mirror-note { position:absolute;left:50%;top:67%;z-index:7;min-width:142px;transform:translate(-50%,-50%) rotate(-1deg);box-sizing:border-box;padding:10px 18px;color:#351611;background:#d8cca4;box-shadow:0 4px 12px #000a;font:700 14px/1.45 "Microsoft YaHei",SimSun,sans-serif;text-align:left;pointer-events:none; }.soul-mirror-note strong,.soul-mirror-note span{display:block}.soul-mirror-note strong{margin-bottom:3px;font-size:17px;text-align:center}.soul-mirror-note span{white-space:nowrap}
 .soul-jumpscare { position:absolute;inset:0;z-index:18;overflow:hidden;pointer-events:none; }
@@ -4966,8 +4966,7 @@ video {
   .soul-3d-stage { cursor: default; touch-action: none; }
   .soul-mouse-icon,
   .soul-control-hint-desktop { display: none; }
-  .soul-control-hint-mobile { display: block; top: 0; }
-  .soul-mouse-guide { bottom: calc(45% + env(safe-area-inset-bottom)); }
+  .soul-mouse-guide { display: none; }
   .soul-touch-controls {
     position: absolute;
     z-index: 8;
@@ -4976,8 +4975,8 @@ video {
     left: max(14px, env(safe-area-inset-left));
     display: flex;
     align-items: end;
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: flex-start;
+    gap: 12px;
     pointer-events: none;
     user-select: none;
     -webkit-user-select: none;
@@ -5001,9 +5000,9 @@ video {
     padding: 0;
     border: 2px solid #b6a573;
     border-radius: 10px;
-    background: #0a0907c7;
+    background: #0a090752;
     color: #e8d8aa;
-    box-shadow: inset 0 0 12px #000, 0 3px 12px #000b;
+    box-shadow: inset 0 0 9px #0009, 0 2px 8px #0007;
     font: 700 22px/1 "Microsoft YaHei", sans-serif;
     pointer-events: auto;
     touch-action: none;
@@ -5016,7 +5015,7 @@ video {
     font-size: 14px;
   }
   .soul-touch-controls button.is-pressed {
-    background: #7c201bd9;
+    background: #7c201b9c;
     transform: translateY(2px) scale(.97);
   }
   .soul-nearby-record {
