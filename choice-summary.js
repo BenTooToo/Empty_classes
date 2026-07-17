@@ -347,12 +347,11 @@ function triggerJumpscare(keepRed, after) {
 
   if (reducedStimulation) {
     jumpscare.classList.add("is-safe");
-    if (keepRed) return;
     window.setTimeout(() => {
       jumpscare.hidden = true;
       jumpscare.classList.remove("is-safe");
-      after?.();
-    }, 1400);
+      if (!keepRed) after?.();
+    }, 2000);
     return;
   }
 

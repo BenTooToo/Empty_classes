@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
   <title id="title">跳杀提示</title>
-  <desc id="desc">静止黑色背景，中央以白字显示：这是一个跳杀。</desc>
+  <desc id="desc">静止黑色背景，画面中间偏上以白字显示：这是一个跳杀。</desc>
   <rect width="1600" height="900" fill="#000"/>
-  <text x="800" y="450" fill="#fff" font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="82" font-weight="700" text-anchor="middle" dominant-baseline="middle">这是一个跳杀</text>
+  <text x="800" y="405" fill="#fff" font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="82" font-weight="700" text-anchor="middle" dominant-baseline="middle">这是一个跳杀</text>
 </svg>

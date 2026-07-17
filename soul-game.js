@@ -12,6 +12,7 @@ const nearbyStatus = document.querySelector('#soulNearbyStatus');
 const mouseGuide = document.querySelector('#soulMouseGuide');
 const touchControls = document.querySelector('#soulTouchControls');
 const touchInteract = document.querySelector('#soulTouchInteract');
+const enterLandscapeButton = document.querySelector('#soulEnterLandscape');
 const mirrorNote = document.querySelector('#soulMirrorNote');
 const jumpscare = document.querySelector('#soulJumpscare');
 const jumpscareWhiteout = document.querySelector('#soulJumpscareWhiteout');
@@ -359,8 +360,9 @@ function startMirrorJumpscare() {
     jumpscare.classList.add('is-safe');
     window.setTimeout(() => {
       jumpscare.hidden = true;
+      jumpscare.classList.remove('is-safe');
       jumpscareActive = false;
-    }, 1200);
+    }, 2000);
     return;
   }
 
@@ -463,6 +465,19 @@ touchInteract?.addEventListener('pointerdown', (event) => {
 });
 touchInteract?.addEventListener('pointerup', () => touchInteract.classList.remove('is-pressed'));
 touchInteract?.addEventListener('pointercancel', () => touchInteract.classList.remove('is-pressed'));
+
+enterLandscapeButton?.addEventListener('click', async () => {
+  keys.clear();
+  try {
+    if (!document.fullscreenElement && stage.requestFullscreen) await stage.requestFullscreen();
+    await screen.orientation?.lock?.('landscape');
+  } catch {
+    /* iOS 等不支持方向锁定的浏览器会继续显示横屏遮罩，用户旋转手机即可。 */
+  }
+});
+
+const portraitOrientation = window.matchMedia('(orientation: portrait)');
+portraitOrientation.addEventListener?.('change', () => keys.clear());
 
 window.addEventListener('blur', () => keys.clear());
 document.addEventListener('visibilitychange', () => {

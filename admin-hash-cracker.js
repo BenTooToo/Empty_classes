@@ -19,6 +19,7 @@ const lockProgramStorageKey = "hash-lock-program-disabled";
 let failedAttempts = 0;
 let consoleLocked = false;
 let jumpscareTriggered = false;
+const isTouchDevice = window.matchMedia("(pointer: coarse)").matches || navigator.maxTouchPoints > 0;
 let lockProgramDisabled = loadLockProgramState();
 const reducedStimulation = (() => {
   try { return localStorage.getItem("zhetang6_reduced_stimulation_v1") === "true"; }
@@ -88,6 +89,37 @@ function lockPasswordConsole() {
   window.setTimeout(() => recoveryInput.focus(), 80);
 }
 
+function syncJumpscareWithVisibleViewport() {
+  if (jumpscare.hidden || !isTouchDevice || !window.visualViewport) {
+    return;
+  }
+
+  const viewport = window.visualViewport;
+  jumpscare.classList.add("uses-visual-viewport");
+  jumpscare.style.setProperty("--hash-jumpscare-top", `${viewport.offsetTop}px`);
+  jumpscare.style.setProperty("--hash-jumpscare-left", `${viewport.offsetLeft}px`);
+  jumpscare.style.setProperty("--hash-jumpscare-width", `${viewport.width}px`);
+  jumpscare.style.setProperty("--hash-jumpscare-height", `${viewport.height}px`);
+}
+
+function dismissMobileKeyboard() {
+  if (!isTouchDevice) {
+    return;
+  }
+
+  if (document.activeElement instanceof HTMLElement) {
+    document.activeElement.blur();
+  }
+
+  try {
+    navigator.virtualKeyboard?.hide();
+  } catch (error) {
+    // visualViewport 会在浏览器不允许主动收起键盘时把跳杀限制在键盘上方。
+  }
+
+  syncJumpscareWithVisibleViewport();
+}
+
 function triggerJumpscare() {
   if (jumpscareTriggered) {
     return;
@@ -95,6 +127,7 @@ function triggerJumpscare() {
 
   jumpscareTriggered = true;
   jumpscare.hidden = false;
+  dismissMobileKeyboard();
   jumpscare.setAttribute("aria-hidden", "false");
   document.body.classList.add("hash-jumpscare-active");
 
@@ -115,6 +148,11 @@ function finishJumpscare() {
   jumpscare.hidden = true;
   jumpscare.setAttribute("aria-hidden", "true");
   jumpscare.classList.remove("is-ending", "is-safe");
+  jumpscare.classList.remove("uses-visual-viewport");
+  jumpscare.style.removeProperty("--hash-jumpscare-top");
+  jumpscare.style.removeProperty("--hash-jumpscare-left");
+  jumpscare.style.removeProperty("--hash-jumpscare-width");
+  jumpscare.style.removeProperty("--hash-jumpscare-height");
   document.body.classList.remove("hash-jumpscare-active");
 
   consoleLocked = false;
@@ -208,13 +246,22 @@ pinForm.addEventListener("submit", (event) => {
   validatePin();
 });
 
-recoveryInput.addEventListener("input", () => {
+function checkRecoveryCommand() {
   const command = recoveryInput.value.trim().toLowerCase();
 
-  if (command.startsWith("unlo")) {
+  if (command.includes("unlo")) {
     triggerJumpscare();
   }
-});
+}
+
+recoveryInput.addEventListener("input", checkRecoveryCommand);
+recoveryInput.addEventListener("compositionend", checkRecoveryCommand);
+recoveryInput.addEventListener("paste", () => window.setTimeout(checkRecoveryCommand));
+
+if (window.visualViewport) {
+  window.visualViewport.addEventListener("resize", syncJumpscareWithVisibleViewport);
+  window.visualViewport.addEventListener("scroll", syncJumpscareWithVisibleViewport);
+}
 
 dateForm.addEventListener("submit", async (event) => {
   event.preventDefault();
