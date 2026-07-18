@@ -41,7 +41,7 @@ const searchRecords = [
     type: "黑箱百科",
     href: "pages/06-zhetang-six-intro.html",
     keys: ["折棠市", "河南省"],
-    text: "折棠市位于河南省，常住人口约41,860人，是一座基础教育机构较少、整体犯罪率较低的小型城市。"
+    text: "折棠市位于河南省，常住人口约41,860人。这座被称为“梦想之乡”的小城已出现两位300万元彩票中奖者。"
   },
   {
     title: "管理员登录",
@@ -67,6 +67,13 @@ const searchRecords = [
     href: "pages/39-liang-zhiyuan-news.html",
     keys: ["梁致远"],
     text: "原折棠市第六中学高三（7）班班长梁致远坠楼身亡，事件引发广泛讨论。"
+  },
+  {
+    title: "折棠市再出300万大奖，两名中奖者竟是同班好友",
+    type: "娱乐新闻",
+    href: "pages/44-zhetang-lottery-friends-news.html",
+    keys: ["魏兆", "方砚", "彩票", "中奖", "300万", "三百万", "折棠市", "折棠市彩票"],
+    text: "继魏兆中得300万元后，折棠市第二位本地高额彩票中奖者方砚再次赢得300万元；两人均为梁致远的朋友。"
   },
   {
     title: "截图",

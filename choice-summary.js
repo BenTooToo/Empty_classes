@@ -301,7 +301,7 @@ function visitAuthorChannel() {
 }
 
 function showRebelliousSummary() {
-  const lines = ["你在游戏尚未开始之前，就已经自寻思路。"];
+  const lines = ["你在游戏尚未开始之前，就已经自寻死路。"];
   if (playerHistory.quickReaction) lines.push("竟然还尿裤子了。");
   lines.push(
     "希望你能够遵纪守法，将叛逆的种子埋藏在心底，",

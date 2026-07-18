@@ -2477,14 +2477,17 @@ body.photo-lightbox-open {
 
 .truth-revealed a {
   color: #d6aa42;
-  text-decoration: none;
+  text-decoration-line: underline;
+  text-decoration-color: rgba(214, 170, 66, 0.75);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
   text-shadow: 0 0 8px rgba(214, 170, 66, 0.35);
 }
 
 .truth-revealed a:hover,
 .truth-revealed a:focus-visible {
   color: #f2d37f;
-  text-decoration: underline;
+  text-decoration-color: currentColor;
 }
 
 .memoir-page {
@@ -3053,8 +3056,162 @@ body.opening-active {
   color: #fff;
   outline: none;
 }
-.desire-ending-page .memoir-sheet strong { color: #861e2d; }
-.desire-ending-page .desire-author-note { margin-top: 1em; }
+.desire-ending-page {
+  padding-block: clamp(28px, 6vw, 72px);
+  background:
+    radial-gradient(circle at 50% 0, rgba(255, 252, 242, 0.72), transparent 42%),
+    #e8e1d4;
+}
+
+.desire-ending-page .desire-ending-sheet {
+  position: relative;
+  width: min(780px, 100%);
+  padding: clamp(48px, 8vw, 82px) clamp(30px, 9vw, 86px) clamp(42px, 7vw, 70px);
+  overflow: hidden;
+}
+
+.desire-ending-page .desire-ending-sheet::before {
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(117, 85, 33, 0.16);
+  pointer-events: none;
+  content: "";
+}
+
+.desire-ending-header {
+  position: relative;
+  text-align: center;
+}
+
+.desire-ending-page .desire-ending-header h1 {
+  margin-bottom: 20px;
+}
+
+.desire-ending-ornament {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #a58d68;
+  font-size: 9px;
+}
+
+.desire-ending-ornament::before,
+.desire-ending-ornament::after {
+  width: 72px;
+  height: 1px;
+  background: linear-gradient(to var(--line-direction, right), #cabb9f, transparent);
+  content: "";
+}
+
+.desire-ending-ornament::before {
+  margin-left: auto;
+  --line-direction: left;
+}
+
+.desire-ending-ornament::after {
+  margin-right: auto;
+}
+
+.desire-ending-story {
+  margin-top: clamp(52px, 9vw, 78px);
+}
+
+.desire-ending-page .desire-ending-story p {
+  margin: 0;
+  font-size: clamp(17px, 2vw, 18px);
+  line-height: 2.15;
+  letter-spacing: 0.035em;
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+.desire-ending-page .desire-ending-story p + p {
+  margin-top: 1.35em;
+}
+
+.desire-ending-page .memoir-sheet strong {
+  color: #861e2d;
+  font-weight: 600;
+}
+
+.desire-ending-footer {
+  margin-top: 6.45em;
+}
+
+.desire-ending-page .desire-author-note {
+  margin: 0;
+  padding: 30px 0 0;
+  border-top: 1px solid #d8cebe;
+}
+
+.desire-ending-page .desire-author-note h2 {
+  margin: 0 0 22px;
+  color: #776b5d;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+}
+
+.desire-ending-page .desire-author-note p {
+  color: #5c5349;
+  font-size: 15px;
+  line-height: 2;
+}
+
+.desire-ending-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 14px;
+  margin-top: 44px;
+}
+
+.desire-ending-page .desire-ending-action {
+  display: flex;
+  min-height: 48px;
+  padding: 10px 18px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #bba98c;
+  background: transparent;
+  color: #755521;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.desire-ending-page .desire-ending-action-primary {
+  border-color: #765a34;
+  background: #765a34;
+  color: #fffdf8;
+}
+
+.desire-ending-page .desire-ending-action:hover,
+.desire-ending-page .desire-ending-action:focus-visible {
+  border-color: #861e2d;
+  background: #861e2d;
+  color: #fff;
+  outline: none;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 540px) {
+  .desire-ending-page .desire-ending-sheet::before {
+    inset: 10px;
+  }
+
+  .desire-ending-footer {
+    margin-top: 6em;
+  }
+
+  .desire-ending-actions {
+    grid-template-columns: 1fr;
+  }
+}
 
 .special-thanks-page {
   margin: 0;
@@ -4984,8 +5141,8 @@ video {
     left: max(14px, env(safe-area-inset-left));
     display: flex;
     align-items: end;
-    justify-content: flex-start;
-    gap: 12px;
+    justify-content: space-between;
+    gap: 24px;
     pointer-events: none;
     user-select: none;
     -webkit-user-select: none;
@@ -5000,7 +5157,12 @@ video {
   .soul-touch-left { grid-column: 1; grid-row: 2; }
   .soul-touch-down { grid-column: 2; grid-row: 2; }
   .soul-touch-right { grid-column: 3; grid-row: 2; }
-  .soul-touch-actions { display: flex; align-items: end; gap: 7px; }
+  .soul-touch-actions {
+    display: flex;
+    align-items: end;
+    justify-content: flex-end;
+    gap: 7px;
+  }
   .soul-touch-controls button {
     width: 54px;
     height: 54px;
@@ -5016,6 +5178,17 @@ video {
     pointer-events: auto;
     touch-action: none;
     -webkit-tap-highlight-color: transparent;
+  }
+  .soul-control-icon {
+    display: block;
+    width: 26px;
+    height: 26px;
+    margin: auto;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
   .soul-touch-controls .soul-touch-interact {
     width: 68px;
@@ -5058,14 +5231,6 @@ video {
   .soul-landscape-gate>span:not(.soul-rotate-phone) { color:#81775c;font-size:12px;letter-spacing:1px; }
   .soul-rotate-phone { display:block;color:#b72c2c;font:700 68px/1 monospace;transform:rotate(90deg);animation:soul-phone-rotate 1.6s ease-in-out infinite; }
   .soul-landscape-gate button { min-width:160px;margin-top:8px;padding:10px 16px;border:1px solid #806e43;background:#17140e;color:#d8c792;font:700 14px "Microsoft YaHei",sans-serif;letter-spacing:1px; }
-  .soul-touch-actions {
-    display: grid;
-    grid-template-columns: repeat(2, 54px);
-    grid-template-rows: repeat(2, 54px);
-  }
-  .soul-touch-interact { grid-column: 1 / -1; grid-row: 1; justify-self: end; }
-  .soul-touch-actions [data-hold-code="ArrowLeft"] { grid-column: 1; grid-row: 2; }
-  .soul-touch-actions [data-hold-code="ArrowRight"] { grid-column: 2; grid-row: 2; }
 }
 
 @keyframes soul-phone-rotate {
@@ -5134,7 +5299,7 @@ video {
 @media (max-width: 380px) {
   .soul-touch-controls { right: 8px; bottom: max(8px, env(safe-area-inset-bottom)); left: 8px; gap: 8px; }
   .soul-touch-move { grid-template-columns: repeat(3, 46px); grid-template-rows: repeat(2, 46px); gap: 4px; }
-  .soul-touch-actions { grid-template-columns: repeat(2, 46px); grid-template-rows: repeat(2, 46px); gap: 4px; }
+  .soul-touch-actions { gap: 4px; }
   .soul-touch-controls button { width: 46px; height: 46px; }
   .soul-touch-controls .soul-touch-interact { width: 60px; }
   .site-status-bar { padding: 0 7px; font-size: 12px; }
