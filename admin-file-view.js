@@ -202,7 +202,7 @@ const fileRecords = {
     title: "个人简介",
     html: `
       <figure class="role-file-photo">
-        <img src="../lin-ruoxuan.png" alt="林若萱公开资料照片">
+        <img src="../lin-ruoxuan.webp" alt="林若萱公开资料照片">
         <figcaption>林若萱第六次举办个人画展</figcaption>
       </figure>
       <p>林若萱，出生于折棠市，中国青年艺术家。公开资料显示，她早年在折棠市第六中学就读，并曾担任班级美术委员，后以个人绘画创作进入公众视野。</p>
@@ -214,7 +214,7 @@ const fileRecords = {
     title: "入院新闻",
     html: `
       <figure class="role-file-photo">
-        <img src="../lin-ruoxuan-ambulance-cn-final.png" alt="医护人员将林若萱送上救护车的现场照片">
+        <img src="../lin-ruoxuan-ambulance-cn-final.webp" alt="医护人员将林若萱送上救护车的现场照片">
         <figcaption>现场流出的照片显示，医护人员正将林若萱送上救护车。</figcaption>
       </figure>
       <p>青年画家林若萱在工作室突发意外，疑似因长期接触污染颜料导致中毒昏迷。目前林若萱仍在医院接受治疗。</p>
@@ -248,12 +248,12 @@ const fileRecords = {
     title: "班级相册",
     html: `
       <div class="role-file-gallery">
-        <figure><img src="../sport.png" alt="秋季运动会合照"><figcaption>2014 秋季运动会</figcaption></figure>
-        <figure><img src="../spring.png" alt="春游合照"><figcaption>2015 春游合照</figcaption></figure>
-        <figure><img src="../dimpome.png" alt="毕业前的教室合照"><figcaption>2016 毕业前的教室</figcaption></figure>
-        <figure><img src="../credit.png" alt="窗边街景"><figcaption>熟悉的街景</figcaption></figure>
-        <figure><img src="../art.png" alt="美术相关照片"><figcaption>林若萱是我们的骄傲</figcaption></figure>
-        <figure><img src="../computer.png" alt="机房照片"><figcaption>大家最喜欢的地方</figcaption></figure>
+        <figure><img src="../sport.webp" alt="秋季运动会合照"><figcaption>2014 秋季运动会</figcaption></figure>
+        <figure><img src="../spring.webp" alt="春游合照"><figcaption>2015 春游合照</figcaption></figure>
+        <figure><img src="../dimpome.webp" alt="毕业前的教室合照"><figcaption>2016 毕业前的教室</figcaption></figure>
+        <figure><img src="../credit.webp" alt="窗边街景"><figcaption>熟悉的街景</figcaption></figure>
+        <figure><img src="../art.webp" alt="美术相关照片"><figcaption>林若萱是我们的骄傲</figcaption></figure>
+        <figure><img src="../computer.webp" alt="机房照片"><figcaption>大家最喜欢的地方</figcaption></figure>
       </div>
     `
   },

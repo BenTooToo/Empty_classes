@@ -1,4 +1,4 @@
-/* 背景使用 pics/pan3.png。 */
+/* 背景使用 pics/pan3.webp。 */
 .page-index-note-fixed {
   position: fixed;
   right: 12px;
@@ -21,7 +21,7 @@ body {
   color: #251d12;
   font-family: Arial, "Microsoft YaHei", sans-serif;
   background-color: #f5df8e;
-  background-image: linear-gradient(rgba(255,248,202,.78), rgba(255,248,202,.78)), url("pics/pan3.png");
+  background-image: linear-gradient(rgba(255,248,202,.78), rgba(255,248,202,.78)), url("pics/pan3.webp");
   background-size: 210px auto;
 }
 nav { position: sticky; top: 0; z-index: 3; display: flex; justify-content: center; background: linear-gradient(#1873c6, #064887); border-top: 3px solid #ffec00; border-bottom: 3px solid #ffec00; }

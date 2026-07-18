@@ -28,19 +28,19 @@ const searchRecords = [
     title: "福安饭心理咨询服务推荐",
     type: "公告",
     href: "pages/26-fuanfan-counseling-notice.html",
-    keys: ["福安饭", "福安家常饭馆"]
+    keys: ["福安饭", "福安家常饭馆","福安"]
   },
   {
     title: "班级相册",
     type: "相册",
     href: "pages/05-class-album.html",
-    keys: ["班级相册", "相册","2015春游_湖边合照"]
+    keys: ["班级相册", "相册","2015春游_湖边合照","照片","合照"]
   },
   {
     title: "折棠市",
     type: "黑箱百科",
     href: "pages/06-zhetang-six-intro.html",
-    keys: ["折棠市", "河南省"],
+    keys: ["折棠","折棠市"],
     text: "折棠市位于河南省，常住人口约41,860人。这座被称为“梦想之乡”的小城已出现两位300万元彩票中奖者。"
   },
   {
@@ -72,7 +72,7 @@ const searchRecords = [
     title: "折棠市再出300万大奖，两名中奖者竟是同班好友",
     type: "娱乐新闻",
     href: "pages/44-zhetang-lottery-friends-news.html",
-    keys: ["魏兆", "方砚", "彩票", "中奖", "300万", "三百万", "折棠市", "折棠市彩票"],
+    keys: ["魏兆", "方砚"],
     text: "继魏兆中得300万元后，折棠市第二位本地高额彩票中奖者方砚再次赢得300万元；两人均为梁致远的朋友。"
   },
   {
@@ -91,7 +91,7 @@ const searchRecords = [
     title: "本2兔",
     type: "黑箱百科",
     href: "pages/27-ben2tu-profile.html",
-    keys: ["本2兔", "本二兔", "ben2tu", "bilibili", "折棠6中同窗录作者"]
+    keys: ["本2兔", "本二兔", "ben2tu", "bilibili"]
   },
   {
     title: "哈希函数",
@@ -128,7 +128,7 @@ const searchRecords = [
     title: "奥摩耶他降魂仪式，真的可以实现愿望",
     type: "黑箱论坛",
     href: "pages/31-omoyeta-ritual-thread.html",
-    keys: ["奥摩耶他降魂仪式", "奥摩耶他", "降魂仪式"]
+    keys: ["奥摩耶他降魂仪式", "奥摩耶他", "降魂仪式","降魂"]
   },
   
 ];

@@ -49,7 +49,7 @@
         <p class="ent-lede">多名现场目击者称，林若萱被医护人员从工作室附近送上救护车时，现场一度拉起警戒线，随后车辆驶离。</p>
 
         <figure class="ent-photo">
-          <img id="ambulancePhoto" src="../lin-ruoxuan-ambulance-cn-final.png" alt="医护人员将林若萱送上救护车的现场照片" title="查看现场照片">
+          <img id="ambulancePhoto" src="../lin-ruoxuan-ambulance-cn-final.webp" alt="医护人员将林若萱送上救护车的现场照片" title="查看现场照片">
           <figcaption data-ent-original="现场流出的照片显示，医护人员正将林若萱送上救护车。">现场流出的照片显示，医护人员正将林若萱送上救护车。</figcaption>
         </figure>
 
@@ -121,7 +121,7 @@
       }
 
       ambulanceSequenceStarted = true;
-      ambulancePhoto.src = "../lin-ruoxuan-ambulance-cn.png";
+      ambulancePhoto.src = "../lin-ruoxuan-ambulance-cn.webp";
       let reducedStimulation = false;
       try {
         reducedStimulation = localStorage.getItem("zhetang6_reduced_stimulation_v1") === "true";
@@ -146,7 +146,7 @@
       window.setTimeout(() => {
         document.body.classList.remove("ent-red-alert", "ent-site-shift");
         restoreEntText();
-        ambulancePhoto.src = "../lin-ruoxuan-ambulance-cn-final.png";
+        ambulancePhoto.src = "../lin-ruoxuan-ambulance-cn-final.webp";
         ambulancePhoto.classList.add("is-locked");
         ambulancePhoto.removeAttribute("title");
         comaCause.textContent = "縺薙％縺ｫ蜿守判縺後≠繧九→縺ｯ髯舌ｉ縺ｪ縺";

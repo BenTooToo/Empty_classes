@@ -4191,7 +4191,7 @@ body.opening-active {
 
 .eye-strip {
   z-index: 1;
-  background: url("ghost-girl-inverted-eyes-strip.png") center / 100% auto no-repeat;
+  background: url("ghost-girl-inverted-eyes-strip.webp") center / 100% auto no-repeat;
   filter: saturate(0.95) contrast(1.18) brightness(0.84);
   transform: rotate(180deg);
 }
