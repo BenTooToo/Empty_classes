@@ -40,7 +40,7 @@ const searchRecords = [
     title: "折棠市",
     type: "黑箱百科",
     href: "pages/06-zhetang-six-intro.html",
-    keys: ["折棠","折棠市"],
+    keys: ["折棠","折棠市","折棠6中"],
     text: "折棠市位于河南省，常住人口约41,860人。这座被称为“梦想之乡”的小城已出现两位300万元彩票中奖者。"
   },
   {
@@ -53,13 +53,13 @@ const searchRecords = [
     title: "错误",
     type: "权限错误",
     href: "pages/08-absence-correction.html",
-    keys: ["缺席", "缺席名单"]
+    keys: ["林媛","缺席", "缺席名单"]
   },
   {
     title: "学生名单",
     type: "名单",
     href: "pages/09-student-roster.html",
-    keys: ["学生","名单","学生名单", "信息委员", "美术委员","班长"]
+    keys: ["体育委员","学生","名单","学生名单", "信息委员", "美术委员","班长"]
   },
   {
     title: "震惊，折棠6中优秀学生跳楼自杀",
@@ -121,7 +121,7 @@ const searchRecords = [
     title: "悬案：学校网站惊现幽灵少女",
     type: "娱乐新闻",
     href: "pages/29-ghost-girl-news.html",
-    keys: ["幽灵","幽灵少女", "悬案"]
+    keys: ["幽灵","幽灵女孩", "悬案"]
   },
  
   {

@@ -11,7 +11,6 @@ const accounts = [
     displayName: "美术委员",
     aliases: ["qoisadjk"],
     passwords: ["inks"],
-    passwordCaseSensitive: true,
     href: "pages/admin-art-dashboard.html"
   },
   {
@@ -53,18 +52,11 @@ function normalize(value) {
 
 function findAccount(username, password) {
   const normalizedUsername = normalize(username);
-  const trimmedPassword = password.trim();
   const normalizedPassword = normalize(password);
 
   return accounts.find((account) => {
     const aliasMatched = account.aliases.some((alias) => normalize(alias) === normalizedUsername);
-    const passwordMatched = account.passwords.some((item) => {
-      if (account.passwordCaseSensitive) {
-        return item === trimmedPassword;
-      }
-
-      return item === trimmedPassword || normalize(item) === normalizedPassword;
-    });
+    const passwordMatched = account.passwords.some((item) => normalize(item) === normalizedPassword);
 
     return aliasMatched && passwordMatched;
   });

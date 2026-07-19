@@ -64,7 +64,7 @@ addressQuery.addEventListener("submit", (event) => {
   const road = normalizeAddressPart(addressQuery.elements.road.value);
   const houseNumber = normalizeAddressPart(addressQuery.elements["house-number"].value);
 
-  if (road === "苍松7路" && houseNumber === "78号") {
+  if (road === "苍松7路" && ["78", "78号"].includes(houseNumber)) {
     showQueryModal();
     return;
   }
@@ -86,9 +86,34 @@ closeInstallationInvite.addEventListener("click", () => {
   installationInvite.setAttribute("aria-hidden", "true");
 });
 
+function getLocalInstallationDate(time) {
+  const [hours, minutes] = time.split(":").map(Number);
+  const now = new Date();
+  const installationDate = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate(),
+    hours,
+    minutes
+  );
+
+  if (installationDate <= now) {
+    installationDate.setDate(installationDate.getDate() + 1);
+  }
+
+  return new Intl.DateTimeFormat("zh-CN", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    weekday: "long"
+  }).format(installationDate);
+}
+
 installationTimeButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    window.alert(`已预约 ${button.dataset.installationTime}。安装地点：你的卧室。`);
+    const installationTime = button.dataset.installationTime;
+    const installationDate = getLocalInstallationDate(installationTime);
+    window.alert(`已预约 ${installationDate} ${installationTime}。安装地点：你的卧室。`);
     installationInvite.classList.remove("is-visible");
     installationInvite.setAttribute("aria-hidden", "true");
   });

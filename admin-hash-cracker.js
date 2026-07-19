@@ -12,6 +12,7 @@ const jumpscare = document.querySelector("#hashJumpscare");
 const dateForm = document.querySelector("#hashDateForm");
 const dateInput = document.querySelector("#hashDateInput");
 const hashOutput = document.querySelector("#hashOutput");
+const maxHashInputLength = 8;
 const digits = ["", "", "", ""];
 const diaryDatePassword = "20160304";
 const fixedPassword = "6D3F8A91C4E72B0F9A5D13E8B6C0472AD9F01C35E8B64A7F2D0C93B18E5A4F6D";
@@ -268,13 +269,13 @@ dateForm.addEventListener("submit", async (event) => {
 
   const inputValue = dateInput.value.trim();
 
-  if (inputValue === diaryDatePassword) {
-    hashOutput.textContent = fixedPassword;
+  if (Array.from(inputValue).length !== maxHashInputLength) {
+    hashOutput.textContent = "请输入8个字";
     return;
   }
 
-  if (!inputValue) {
-    hashOutput.textContent = "";
+  if (inputValue === diaryDatePassword) {
+    hashOutput.textContent = fixedPassword;
     return;
   }
 
